@@ -29,6 +29,7 @@ class MomentsController < ApplicationController
   # POST /moments.json
   def create
     @moment = Moment.new(moment_params)
+    @moment.user = current_user
 
     respond_to do |format|
       if @moment.save
