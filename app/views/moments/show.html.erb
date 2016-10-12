@@ -1,24 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Moment -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Moment %></h1>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @moment.user %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @moment.description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:happened_at) %></dt>
+      <dd><pre class="prettyprint"><%= @moment.happened_at %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @moment.description %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              moments_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_moment_path(@moment), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              moment_path(@moment),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Happened at:</strong>
-  <%= @moment.happened_at %>
-</p>
-
-<p>
-  <strong>Place:</strong>
-  <%= @moment.place %>
-</p>
-
-<%= link_to 'Edit', edit_moment_path(@moment) %> |
-<%= link_to 'Back', moments_path %>
