@@ -15,7 +15,6 @@
 }
 
 .navbar-default .navbar-brand {
-	// margin-top: 0px;
 	padding-top: 7px;
 }
 
@@ -30,6 +29,9 @@
 	color: #fffcf3;
 }
 
+.navbar-right {
+	margin-right: 0px;
+}
 
 
 
@@ -62,20 +64,20 @@
 
 
 
-.profile > h2 {
+.profile h2 {
 	font-size: 24px;
 	margin-top: 0em;
 	margin-bottom: 0.5em;
 }
 
-.profile > h3 {
+.profile h3 {
 	font-size: 18px;
 	font-weight: normal;
 	margin-top: 0em;
-	margin-bottom: 0.5em;
+	margin-bottom: 1em;
 }
 
-.profile > img {
+.profile img {
 	margin-bottom: 1em;
 	height: 182px;
 	width: 182px;
@@ -84,6 +86,63 @@
 	border-top-color: #E6E6E6;
 	border-bottom-color: #C7C7C7;
 }
+
+.profile .btn {
+	width: 182px;
+}
+
+.profile ul, .landing ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.profile ul a, .landing ul {
+    display: block;
+    padding: 5px 0px;
+}
+
+
+.point > .author {
+	color: #999;
+	font-size: 10pt;
+	font-style: oblique;
+}
+
+.point > .description {
+	padding: 1.5em 3em;
+}
+
+.point > hr {
+	margin: 0.5em 0em;
+}
+
+.point > .actions {
+	margin-bottom: 0em;
+	text-align: right;
+	font-size: 10pt;
+}
+
+.point > .actions a {
+	color: #999;
+}
+
+textarea.new-point {
+	margin-bottom: 1em;
+}
+
+
+
+
+.landing h3 {
+	font-size: 18px;
+	font-weight: normal;
+	margin-top: 0em;
+	margin-bottom: 0em;
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid #DDD;
+}
+
 
 
 
