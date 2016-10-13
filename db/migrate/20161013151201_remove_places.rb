@@ -6,10 +6,10 @@ class RemovePlaces < ActiveRecord::Migration
   	remove_column :points, :place_id
 
   	remove_column :users, :specialties
-  	remove_column :users, :affiliations
   	remove_column :users, :place_id
 
-  	add_column :users, :place, :text
+  	add_column :users, :place, :string
+    add_column :users, :name, :string
   end
 
   def down
@@ -28,9 +28,9 @@ class RemovePlaces < ActiveRecord::Migration
   	add_column :points, :place_id, :integer
 
   	add_column :users, :specialties, :text
-  	add_column :users, :affiliations, :text
   	add_column :users, :place_id, :integer
 
   	remove_column :users, :place
+    remove_column :users, :name
 	end
 end

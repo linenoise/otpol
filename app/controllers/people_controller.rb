@@ -55,7 +55,7 @@ class PeopleController < ApplicationController
   	end
 
     def user_params
-      params.require(:user).permit(:avatar, :bio, :mission, :motto, :website, :place_id, :email_is_public)
+      params.require(:user).permit(:avatar, :bio, :mission, :motto, :website, :place, :name, :affiliations, :email_is_public)
     end
 
 end

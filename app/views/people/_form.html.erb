@@ -3,6 +3,15 @@
              :html => { :class => 'form-horizontal form-model' } do |f| 
   %>
 
+  <!-- Name -->
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :name, :class => 'text-field form-control' %>
+      <div class="form-hint">Whatever you would like us to call you.</div>
+    </div>
+  </div>
+
   <!-- Avatar -->
   <div class="form-group">
     <%= f.label :avatar, :class => 'control-label col-md-2' %>
@@ -36,11 +45,20 @@
     </div>
   </div>
 
+  <!-- Affiliations -->
+  <div class="form-group">
+    <%= f.label :affiliations, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :affiliations, :class => 'text-field form-control' %>
+      <div class="form-hint">Where might someone know you from?</div>
+    </div>
+  </div>
+
   <!-- Place -->
   <div class="form-group">
     <%= f.label :place, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      TODO place_id
+      <%= f.text_field :place, :class => 'text-field form-control' %>
     </div>
   </div>
 

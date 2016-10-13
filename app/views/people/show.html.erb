@@ -8,7 +8,11 @@
 				<%= image_tag @person.avatar.url(:square) %>
 				<% end %>
 
-				<h3><%= @person.username %></h3>
+				<% unless @person.name.to_s.empty? %>
+				<h2><%= @person.name %></h2>
+				<% end %>
+
+				<h3>@<%= @person.username %></h3>
 
 				<% if current_user.id == @person.id %>
 				<%= link_to 'Edit your profile', edit_person_url() %>
@@ -17,26 +21,16 @@
 
 			<div class="content-box profile">
 
-				<% [:bio, :mission, :motto].each do |blurb| %>
+				<% [:bio, :mission, :motto, :affiliations, :place, :website].each do |blurb| %>
 					<% unless @person.send(blurb).to_s.empty? %>
 					<strong><%= blurb.capitalize %></strong><br />
 					<p><%= h @person.send(blurb) %></p>
 					<% end %>
 				<% end %>
 
-				<% unless @person.place_id.to_s.empty? %>
-					<strong>Place</strong><br />
-					<p>TODO format this<%= @person.place_id %></p>
-				<% end %>
-
 				<% if @person.email_is_public %>
 					<strong>Email</strong><br />
 					<p><a href="mailto:<%= @person.email %>"><%= @person.email %></a></p>
-				<% end %>
-
-				<% unless @person.website.to_s.empty? %>
-					<strong>Website</strong><br />
-					<p><a href="<%= @person.website %>"><%= @person.website %></a></p>
 				<% end %>
 
 				<strong>Joined on</strong><br />
