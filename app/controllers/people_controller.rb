@@ -2,6 +2,7 @@ class PeopleController < ApplicationController
 
   before_filter :require_user_signed_in, only: [:edit, :update]
   before_action :set_self, only: [:edit, :update]
+  before_action :update_last_seen_time, only: [:update]
 
   # GET /people/1
   # GET /people/1.json
