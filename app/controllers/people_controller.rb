@@ -1,16 +1,7 @@
 class PeopleController < ApplicationController
 
-  before_filter :require_user_signed_in, only: [:index, :show, :edit, :update]
- 
+  before_filter :require_user_signed_in, only: [:edit, :update]
   before_action :set_self, only: [:edit, :update]
-
-  # GET /people
-  # GET /people.json
-  #
-  # Shows a list of all people you follow and their recent activity
-  def index
-    @people = User.all
-  end
 
   # GET /people/1
   # GET /people/1.json
