@@ -1,14 +1,7 @@
 Rails.application.routes.draw do
   get 'landings/index'
 
-  resources :people do
-  end
-
-  resources :places do
-    member do
-      get "vote"
-    end
-  end
+  resources :people, only: [:index, :show, :edit, :update]
 
   resources :points do
     member do
