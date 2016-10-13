@@ -20,14 +20,14 @@
 			<div class="content-box landing">
 			<h3>Active today</h3>
 			<ul>
-			<%= render partial: "person", collection: User.active.sort { |x, y| x.display_name <=> y.display_name } %>
+			<%= render partial: "person", collection: @active_today %>
 			</ul>
 			</div>
 
 			<div class="content-box landing">
 			<h3>Newcomers</h3>
 			<ul>
-			<%= render partial: "person", collection: User.newcomers.sort { |x, y| x.display_name <=> y.display_name } %>
+			<%= render partial: "person", collection: @newcomers %>
 			</ul>
 			</div>
 

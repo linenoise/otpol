@@ -1,8 +1,8 @@
-<div class="container">
+<div class="profile container">
 	<div class="row">
 		<div class="col-md-3">
 
-			<div class="content-box profile">
+			<div class="content-box">
 
 				<% unless @person.avatar_content_type.to_s.empty? %>
 				<%= image_tag @person.avatar.url(:square) %>
@@ -15,11 +15,15 @@
 				<h3>@<%= @person.username %></h3>
 
 				<% if current_user.id == @person.id %>
-				<%= link_to 'Edit your profile', edit_person_url() %>
+				<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary' %>
+				<% else %>
+
+				TODO add follow and unfollow buttons here.
+
 				<% end %>
 			</div>
 
-			<div class="content-box profile">
+			<div class="content-box">
 
 				<% [:bio, :mission, :motto, :affiliations, :place, :website].each do |blurb| %>
 					<% unless @person.send(blurb).to_s.empty? %>
@@ -41,15 +45,27 @@
 
 			</div>
 
+			<% if current_user.id == @person.id %>
+			<div class="content-box">
+				<ul>
+					<li><%= link_to "Account settings", edit_user_registration_path %></li>
+					<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+				</ul>
+			</div>
+			<% end %>
+
+
 		</div>
 
 		<div class="col-md-9">
 
 			<div class="content-box">
-
-			Points
-
+			<%= render partial: 'points/new' %>
 			</div>
+
+			<% @person.points.each do |point| %>
+			<%= render partial: 'points/point', locals: {point: point} %>
+			<% end %>
 
 		</div>
 	</div>
