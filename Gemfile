@@ -40,7 +40,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'paperclip'
 gem 'rmagick'
-gem 'aws-sdk', '< 2.0' # http://stackoverflow.com/questions/28374401/nameerror-uninitialized-constant-paperclipstorages3aws
+gem 'aws-sdk', '~> 2.3'
 
 ### JavaScript
 
