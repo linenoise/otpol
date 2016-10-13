@@ -14,9 +14,10 @@ To setup a development environment on OSX:
     git clone git@github.com:linenoise/otpol
     cd otpol
     
-    ### Install Nokogiri and other gems
+    ### Install Nokogiri, Imagemagick, and gems
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install imagemagick
     brew tap homebrew/dupes
     brew install libxml2 libxslt
     brew install libiconv
