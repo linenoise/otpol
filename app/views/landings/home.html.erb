@@ -1,42 +1,34 @@
-<div class="container">
+<div class="landing container">
 	<div class="row">
-		<div class="col-md-12">
-
-			<h1>Signed-in user</h1>
+		<div class="col-md-9">
 
 			<div class="content-box">
-				The drift of steam rising up through the manhole cover during a cool night on First Hill
-			</div>
-			<div class="content-box">
-				The twinkle of the salt flats at sunrise in Utah, driving all night and day and night again
-			</div>
-			<div class="content-box">
-				The Earth Church view of mountains from The Meadow in central Washington, with boots and boots and more boots
-			</div>
-			<div class="content-box">
-				The first time you played "balloon can't touch the ground" in the empty living room of your new house
-			</div>
-			<div class="content-box">
-				The smell of cup noodles and urine and marijuana and hope when a protest becomes a homeless camp
-			</div>
-			<div class="content-box">
-				The first time you were able to change lanes and miss hitting the line of bumpy things that separate the lanes
-			</div>
-			<div class="content-box">
-				The proud grin an artist gives her wheatpaste when walking by on an autumn afternoon in Portland
-			</div>
-			<div class="content-box">
-				The expanse of meteors and rolling hills and radio antennas and broken vehicles in the scablands, shrub steppe wailing in the distance
-			</div>
-			<div class="content-box">
-				The moment you cross above the cloud line while driving up the side of an active volcano in the middle of the pacific
-			</div>
-			<div class="content-box">
-				The unexplainable event on Highway 10 between Vidor and Shreveport involving possible time dialation and unconventional propulsion
+			<%= render partial: 'points/new' %>
 			</div>
 
+			<% @points.each do |point| %>
+			<%= render partial: 'points/point', locals: {point: point} %>
+			<% end %>
+
+		</div>
+		<div class="col-md-3">
+
 			<div class="content-box">
-			Share your light
+			TODO recent happenings here
+			</div>
+
+			<div class="content-box landing">
+			<h3>Active today</h3>
+			<ul>
+			<%= render partial: "person", collection: User.active.sort { |x, y| x.display_name <=> y.display_name } %>
+			</ul>
+			</div>
+
+			<div class="content-box landing">
+			<h3>Newcomers</h3>
+			<ul>
+			<%= render partial: "person", collection: User.newcomers.sort { |x, y| x.display_name <=> y.display_name } %>
+			</ul>
 			</div>
 
 		</div>
