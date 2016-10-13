@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
   get 'landings/index'
 
-  resources :points do
-  #->Prelang (voting/acts_as_votable)
-  member do
-    get "vote"
+  resources :people do
   end
-end
-
 
   resources :places do
-  #->Prelang (voting/acts_as_votable)
-  member do
-    get "vote"
+    member do
+      get "vote"
+    end
   end
-end
+
+  resources :points do
+    member do
+      get "vote"
+    end
+  end
 
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}, skip: [:sessions, :registrations]
