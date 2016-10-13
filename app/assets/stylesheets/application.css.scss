@@ -11,18 +11,22 @@
 	background-color: #14162d;
 	border: 0px solid #000;
 	border-bottom: 1px solid #616070;
+	border-radius: 0px;
 }
 
-.navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
-	color: #EEE;
-	font-size: 14pt;
+.navbar-default .navbar-brand {
+	// margin-top: 0px;
+	padding-top: 7px;
 }
 
 .navbar-default .navbar-nav > li > a {
 	font-size: 10pt;
+	font-weight: lighter;
+	letter-spacing: 1px;
+	color: #EEE;
 }
 
-.navbar-default a.navbar-brand:hover, .navbar-default .navbar-nav > li > a:hover {
+.navbar-default .navbar-nav > li > a:hover {
 	color: #fffcf3;
 }
 
