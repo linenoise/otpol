@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "moments/index", type: :view do
+RSpec.describe "points/index", type: :view do
   before(:each) do
-    assign(:moments, [
-      Moment.create!(
+    assign(:points, [
+      Point.create!(
         :user => nil,
         :description => "MyText",
         :place => nil
       ),
-      Moment.create!(
+      Point.create!(
         :user => nil,
         :description => "MyText",
         :place => nil
@@ -16,7 +16,7 @@ RSpec.describe "moments/index", type: :view do
     ])
   end
 
-  it "renders a list of moments" do
+  it "renders a list of points" do
     render
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2

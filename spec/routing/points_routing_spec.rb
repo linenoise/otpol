@@ -1,38 +1,38 @@
 require "rails_helper"
 
-RSpec.describe MomentsController, type: :routing do
+RSpec.describe PointsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/moments").to route_to("moments#index")
+      expect(:get => "/points").to route_to("points#index")
     end
 
     it "routes to #new" do
-      expect(:get => "/moments/new").to route_to("moments#new")
+      expect(:get => "/points/new").to route_to("points#new")
     end
 
     it "routes to #show" do
-      expect(:get => "/moments/1").to route_to("moments#show", :id => "1")
+      expect(:get => "/points/1").to route_to("points#show", :id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/moments/1/edit").to route_to("moments#edit", :id => "1")
+      expect(:get => "/points/1/edit").to route_to("points#edit", :id => "1")
     end
 
     it "routes to #create" do
-      expect(:post => "/moments").to route_to("moments#create")
+      expect(:post => "/points").to route_to("points#create")
     end
 
     it "routes to #update via PUT" do
-      expect(:put => "/moments/1").to route_to("moments#update", :id => "1")
+      expect(:put => "/points/1").to route_to("points#update", :id => "1")
     end
 
     it "routes to #update via PATCH" do
-      expect(:patch => "/moments/1").to route_to("moments#update", :id => "1")
+      expect(:patch => "/points/1").to route_to("points#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/moments/1").to route_to("moments#destroy", :id => "1")
+      expect(:delete => "/points/1").to route_to("points#destroy", :id => "1")
     end
 
   end

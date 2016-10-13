@@ -1,67 +1,67 @@
-class MomentsController < ApplicationController
+class PointsController < ApplicationController
 
   #->Prelang (scaffolding:rails/scope_to_user)
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
 
-  before_action :set_moment, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :set_point, only: [:show, :edit, :update, :destroy, :vote]
 
-  # GET /moments
-  # GET /moments.json
+  # GET /points
+  # GET /points.json
   def index
-    @moments = Moment.all
+    @points = Point.all
   end
 
-  # GET /moments/1
-  # GET /moments/1.json
+  # GET /points/1
+  # GET /points/1.json
   def show
   end
 
-  # GET /moments/new
+  # GET /points/new
   def new
-    @moment = Moment.new
+    @point = Point.new
   end
 
-  # GET /moments/1/edit
+  # GET /points/1/edit
   def edit
   end
 
-  # POST /moments
-  # POST /moments.json
+  # POST /points
+  # POST /points.json
   def create
-    @moment = Moment.new(moment_params)
-    @moment.user = current_user
+    @point = Point.new(point_params)
+    @point.user = current_user
 
     respond_to do |format|
-      if @moment.save
-        format.html { redirect_to @moment, notice: 'Moment was successfully created.' }
-        format.json { render :show, status: :created, location: @moment }
+      if @point.save
+        format.html { redirect_to @point, notice: 'Point was successfully created.' }
+        format.json { render :show, status: :created, location: @point }
       else
         format.html { render :new }
-        format.json { render json: @moment.errors, status: :unprocessable_entity }
+        format.json { render json: @point.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /moments/1
-  # PATCH/PUT /moments/1.json
+  # PATCH/PUT /points/1
+  # PATCH/PUT /points/1.json
   def update
     respond_to do |format|
-      if @moment.update(moment_params)
-        format.html { redirect_to @moment, notice: 'Moment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @moment }
+      if @point.update(point_params)
+        format.html { redirect_to @point, notice: 'Point was successfully updated.' }
+        format.json { render :show, status: :ok, location: @point }
       else
         format.html { render :edit }
-        format.json { render json: @moment.errors, status: :unprocessable_entity }
+        format.json { render json: @point.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /moments/1
-  # DELETE /moments/1.json
+  # DELETE /points/1
+  # DELETE /points/1.json
   def destroy
-    @moment.destroy
+    @point.destroy
     respond_to do |format|
-      format.html { redirect_to moments_url, notice: 'Moment was successfully destroyed.' }
+      format.html { redirect_to points_url, notice: 'Point was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -80,7 +80,7 @@ class MomentsController < ApplicationController
       raise "Direction '#{direction}' is not a valid direction for vote method."
     end
 
-    @moment.vote_by voter: current_user, vote: direction
+    @point.vote_by voter: current_user, vote: direction
 
     redirect_to action: :index
   end
@@ -88,12 +88,12 @@ class MomentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_moment
-      @moment = Moment.find(params[:id])
+    def set_point
+      @point = Point.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def moment_params
-      params.require(:moment).permit(:user_id, :description, :happened_at, :place_id)
+    def point_params
+      params.require(:point).permit(:user_id, :description, :happened_at, :place_id)
     end
 end

@@ -1,2 +1,2 @@
-module MomentsHelper
+module PointsHelper
 end

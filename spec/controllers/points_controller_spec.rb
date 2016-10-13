@@ -18,10 +18,10 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe MomentsController, type: :controller do
+RSpec.describe PointsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # Moment. As you add validations to Moment, be sure to
+  # Point. As you add validations to Point, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -33,68 +33,68 @@ RSpec.describe MomentsController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # MomentsController. Be sure to keep this updated too.
+  # PointsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
-    it "assigns all moments as @moments" do
-      moment = Moment.create! valid_attributes
+    it "assigns all points as @points" do
+      point = Point.create! valid_attributes
       get :index, params: {}, session: valid_session
-      expect(assigns(:moments)).to eq([moment])
+      expect(assigns(:points)).to eq([point])
     end
   end
 
   describe "GET #show" do
-    it "assigns the requested moment as @moment" do
-      moment = Moment.create! valid_attributes
-      get :show, params: {id: moment.to_param}, session: valid_session
-      expect(assigns(:moment)).to eq(moment)
+    it "assigns the requested point as @point" do
+      point = Point.create! valid_attributes
+      get :show, params: {id: point.to_param}, session: valid_session
+      expect(assigns(:point)).to eq(point)
     end
   end
 
   describe "GET #new" do
-    it "assigns a new moment as @moment" do
+    it "assigns a new point as @point" do
       get :new, params: {}, session: valid_session
-      expect(assigns(:moment)).to be_a_new(Moment)
+      expect(assigns(:point)).to be_a_new(Point)
     end
   end
 
   describe "GET #edit" do
-    it "assigns the requested moment as @moment" do
-      moment = Moment.create! valid_attributes
-      get :edit, params: {id: moment.to_param}, session: valid_session
-      expect(assigns(:moment)).to eq(moment)
+    it "assigns the requested point as @point" do
+      point = Point.create! valid_attributes
+      get :edit, params: {id: point.to_param}, session: valid_session
+      expect(assigns(:point)).to eq(point)
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Moment" do
+      it "creates a new Point" do
         expect {
-          post :create, params: {moment: valid_attributes}, session: valid_session
-        }.to change(Moment, :count).by(1)
+          post :create, params: {point: valid_attributes}, session: valid_session
+        }.to change(Point, :count).by(1)
       end
 
-      it "assigns a newly created moment as @moment" do
-        post :create, params: {moment: valid_attributes}, session: valid_session
-        expect(assigns(:moment)).to be_a(Moment)
-        expect(assigns(:moment)).to be_persisted
+      it "assigns a newly created point as @point" do
+        post :create, params: {point: valid_attributes}, session: valid_session
+        expect(assigns(:point)).to be_a(Point)
+        expect(assigns(:point)).to be_persisted
       end
 
-      it "redirects to the created moment" do
-        post :create, params: {moment: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Moment.last)
+      it "redirects to the created point" do
+        post :create, params: {point: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(Point.last)
       end
     end
 
     context "with invalid params" do
-      it "assigns a newly created but unsaved moment as @moment" do
-        post :create, params: {moment: invalid_attributes}, session: valid_session
-        expect(assigns(:moment)).to be_a_new(Moment)
+      it "assigns a newly created but unsaved point as @point" do
+        post :create, params: {point: invalid_attributes}, session: valid_session
+        expect(assigns(:point)).to be_a_new(Point)
       end
 
       it "re-renders the 'new' template" do
-        post :create, params: {moment: invalid_attributes}, session: valid_session
+        post :create, params: {point: invalid_attributes}, session: valid_session
         expect(response).to render_template("new")
       end
     end
@@ -106,53 +106,53 @@ RSpec.describe MomentsController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested moment" do
-        moment = Moment.create! valid_attributes
-        put :update, params: {id: moment.to_param, moment: new_attributes}, session: valid_session
-        moment.reload
+      it "updates the requested point" do
+        point = Point.create! valid_attributes
+        put :update, params: {id: point.to_param, point: new_attributes}, session: valid_session
+        point.reload
         skip("Add assertions for updated state")
       end
 
-      it "assigns the requested moment as @moment" do
-        moment = Moment.create! valid_attributes
-        put :update, params: {id: moment.to_param, moment: valid_attributes}, session: valid_session
-        expect(assigns(:moment)).to eq(moment)
+      it "assigns the requested point as @point" do
+        point = Point.create! valid_attributes
+        put :update, params: {id: point.to_param, point: valid_attributes}, session: valid_session
+        expect(assigns(:point)).to eq(point)
       end
 
-      it "redirects to the moment" do
-        moment = Moment.create! valid_attributes
-        put :update, params: {id: moment.to_param, moment: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(moment)
+      it "redirects to the point" do
+        point = Point.create! valid_attributes
+        put :update, params: {id: point.to_param, point: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(point)
       end
     end
 
     context "with invalid params" do
-      it "assigns the moment as @moment" do
-        moment = Moment.create! valid_attributes
-        put :update, params: {id: moment.to_param, moment: invalid_attributes}, session: valid_session
-        expect(assigns(:moment)).to eq(moment)
+      it "assigns the point as @point" do
+        point = Point.create! valid_attributes
+        put :update, params: {id: point.to_param, point: invalid_attributes}, session: valid_session
+        expect(assigns(:point)).to eq(point)
       end
 
       it "re-renders the 'edit' template" do
-        moment = Moment.create! valid_attributes
-        put :update, params: {id: moment.to_param, moment: invalid_attributes}, session: valid_session
+        point = Point.create! valid_attributes
+        put :update, params: {id: point.to_param, point: invalid_attributes}, session: valid_session
         expect(response).to render_template("edit")
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested moment" do
-      moment = Moment.create! valid_attributes
+    it "destroys the requested point" do
+      point = Point.create! valid_attributes
       expect {
-        delete :destroy, params: {id: moment.to_param}, session: valid_session
-      }.to change(Moment, :count).by(-1)
+        delete :destroy, params: {id: point.to_param}, session: valid_session
+      }.to change(Point, :count).by(-1)
     end
 
-    it "redirects to the moments list" do
-      moment = Moment.create! valid_attributes
-      delete :destroy, params: {id: moment.to_param}, session: valid_session
-      expect(response).to redirect_to(moments_url)
+    it "redirects to the points list" do
+      point = Point.create! valid_attributes
+      delete :destroy, params: {id: point.to_param}, session: valid_session
+      expect(response).to redirect_to(points_url)
     end
   end
 

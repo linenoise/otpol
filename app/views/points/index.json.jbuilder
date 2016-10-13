@@ -1,1 +1,1 @@
-json.array! @moments, partial: 'moments/moment', as: :moment
+json.array! @points, partial: 'points/point', as: :point

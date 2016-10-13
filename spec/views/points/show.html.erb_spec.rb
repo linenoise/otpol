@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "moments/show", type: :view do
+RSpec.describe "points/show", type: :view do
   before(:each) do
-    @moment = assign(:moment, Moment.create!(
+    @point = assign(:point, Point.create!(
       :user => nil,
       :description => "MyText",
       :place => nil

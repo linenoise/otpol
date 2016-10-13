@@ -1,6 +1,6 @@
-<%- model_class = Moment -%>
+<%- model_class = Point -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => Moment %></h1>
+  <h1><%=t '.title', :default => Point %></h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -13,18 +13,18 @@
     </tr>
   </thead>
   <tbody>
-    <% @moments.each do |moment| %>
+    <% @points.each do |point| %>
       <tr>
-        <td><%= moment.id %></td>
-        <td><%= moment.description %></td>
-        <td><%= moment.happened_at %></td>
-        <td><%=l moment.created_at, format: :long %></td>
+        <td><%= point.id %></td>
+        <td><%= point.description %></td>
+        <td><%= point.happened_at %></td>
+        <td><%=l point.created_at, format: :long %></td>
         <td>
-          <%= link_to moment_path(moment), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+          <%= link_to point_path(point), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
             <%= glyph 'pencil' %>
           <%- end -%>
-          <%= link_to moment_path(moment), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+          <%= link_to point_path(point), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
             <%= glyph 'remove' %>
           <%- end -%>
         </td>
@@ -34,5 +34,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_moment_path,
+            new_point_path,
             :class => 'btn btn-primary' %>

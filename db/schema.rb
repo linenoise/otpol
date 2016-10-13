@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012123145) do
+ActiveRecord::Schema.define(version: 20161013092312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,18 +65,6 @@ ActiveRecord::Schema.define(version: 20161012123145) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "moments", force: true do |t|
-    t.integer  "user_id"
-    t.text     "description"
-    t.date     "happened_at"
-    t.integer  "place_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "moments", ["place_id"], name: "index_moments_on_place_id", using: :btree
-  add_index "moments", ["user_id"], name: "index_moments_on_user_id", using: :btree
-
   create_table "places", force: true do |t|
     t.text     "name"
     t.float    "latitude"
@@ -87,6 +75,18 @@ ActiveRecord::Schema.define(version: 20161012123145) do
   end
 
   add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
+
+  create_table "points", force: true do |t|
+    t.integer  "user_id"
+    t.text     "description"
+    t.date     "happened_at"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "points", ["place_id"], name: "index_points_on_place_id", using: :btree
+  add_index "points", ["user_id"], name: "index_points_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

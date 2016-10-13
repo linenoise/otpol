@@ -1,4 +1,4 @@
-ActiveAdmin.register Moment do
+ActiveAdmin.register Point do
   permit_params :description, :happened_at
 
 # See permitted parameters documentation:

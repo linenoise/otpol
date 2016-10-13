@@ -1,24 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe "moments/new", type: :view do
+RSpec.describe "points/new", type: :view do
   before(:each) do
-    assign(:moment, Moment.new(
+    assign(:point, Point.new(
       :user => nil,
       :description => "MyText",
       :place => nil
     ))
   end
 
-  it "renders new moment form" do
+  it "renders new point form" do
     render
 
-    assert_select "form[action=?][method=?]", moments_path, "post" do
+    assert_select "form[action=?][method=?]", points_path, "post" do
 
-      assert_select "input#moment_user_id[name=?]", "moment[user_id]"
+      assert_select "input#point_user_id[name=?]", "point[user_id]"
 
-      assert_select "textarea#moment_description[name=?]", "moment[description]"
+      assert_select "textarea#point_description[name=?]", "point[description]"
 
-      assert_select "input#moment_place_id[name=?]", "moment[place_id]"
+      assert_select "input#point_place_id[name=?]", "point[place_id]"
     end
   end
 end
