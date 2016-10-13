@@ -1,47 +1,15 @@
 <div class="landing container">
 	<div class="row">
 		<div class="col-md-9">
-
-			<div class="content-box">
-			<%= render partial: 'points/new' %>
-			</div>
-
-			<% @points.each do |point| %>
-			<%= render partial: 'points/point', locals: {point: point} %>
-			<% end %>
-
+			<%= render partial: 'share_your_light' %>
+			<%= render partial: 'points' %>
 		</div>
 		<div class="col-md-3">
-
-<!-- 			<div class="content-box">
-			<h3>Notifications</h3>
-			TODO
-			</div>
- -->
-<!-- 			<div class="content-box">
-			<h3>Messages</h3>
-			TODO
-			</div>
- -->
-			<div class="content-box landing">
-			<h3>Active today</h3>
-			<ul>
-			<%= render partial: "person", collection: @active_today %>
-			</ul>
-			</div>
-
-<!-- 			<div class="content-box">
-			<h3>Chat</h3>
-			TODO
-			</div>
- -->
-			<div class="content-box landing">
-			<h3>Newcomers</h3>
-			<ul>
-			<%= render partial: "person", collection: @newcomers %>
-			</ul>
-			</div>
-
+			<%= render partial: 'notifications' %>
+			<%= render partial: 'messages' %>
+			<%= render partial: 'active_today' %>
+			<%= render partial: 'chat' %>
+			<%= render partial: 'newcomers' %>
 		</div>
 	</div>
 </div>

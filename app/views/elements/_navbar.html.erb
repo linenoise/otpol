@@ -21,7 +21,7 @@
           <li><%= link_to "profile", person_path(:id => current_user.username ) %></li>
         <% else %>
           <li><%= link_to "login", new_user_session_path %></li>
-          <li><%= link_to "sign up", new_user_registration_path %></li>
+          <li><%= link_to "join", new_user_registration_path %></li>
         <% end %>
       <% end %>
     </ul>

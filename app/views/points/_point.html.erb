@@ -1,6 +1,6 @@
 <div class="content-box point">
 	<div class="actions">
-		<% if current_user.id == point.user.id %>
+		<% if user_signed_in? && current_user.id == point.user.id %>
 	        <%= link_to 'Edit', edit_point_path(point) %>
 	        &middot;
         	<%= link_to 'Delete', point_path(point),
@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="author">
-		Shared by <%= link_to point.user.display_name, person_path(:id => current_user.username ) %>
+		Shared by <%= link_to point.user.display_name, person_path(:id => point.user.username ) %>
 		on <%= point.created_at.strftime("%B %d, %Y") %>
 	</div>
 	

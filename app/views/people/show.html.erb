@@ -12,10 +12,10 @@
 				<h2><%= @person.name %></h2>
 				<% end %>
 
-				<h3>@<%= @person.username %></h3>
+				<h3 class="username">@<%= @person.username %></h3>
 
-				<% if current_user.id == @person.id %>
-				<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary' %>
+				<% if user_signed_in? && current_user.id == @person.id %>
+				<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary btn-edit' %>
 				<% else %>
 
 				<!--
@@ -60,7 +60,7 @@
  -->
 
 
-			<% if current_user.id == @person.id %>
+			<% if user_signed_in? && current_user.id == @person.id %>
 			<div class="content-box">
 				<h3>Account</h3>
 				<ul>
@@ -75,9 +75,11 @@
 
 		<div class="col-md-9">
 
+			<% if user_signed_in? && current_user.id == @person.id %>
 			<div class="content-box">
 			<%= render partial: 'points/new' %>
 			</div>
+			<% end %>
 
 			<% @person.points.each do |point| %>
 			<%= render partial: 'points/point', locals: {point: point} %>

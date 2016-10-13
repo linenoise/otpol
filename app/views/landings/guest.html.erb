@@ -1,44 +1,16 @@
-<div class="container">
+<div class="hero content-box">
+    <img src="<%=image_path('otpol_brand.png')%>" />
+</div>
+
+<div class="guest landing container">
 	<div class="row">
-		<div class="col-md-12">
-
-			<h1>Guest User</h1>
-
-			<div class="content-box">
-				The drift of steam rising up through the manhole cover during a cool night on First Hill
-			</div>
-			<div class="content-box">
-				The twinkle of the salt flats at sunrise in Utah, driving all night and day and night again
-			</div>
-			<div class="content-box">
-				The Earth Church view of mountains from The Meadow in central Washington, with boots and boots and more boots
-			</div>
-			<div class="content-box">
-				The first time you played "balloon can't touch the ground" in the empty living room of your new house
-			</div>
-			<div class="content-box">
-				The smell of cup noodles and urine and marijuana and hope when a protest becomes a homeless camp
-			</div>
-			<div class="content-box">
-				The first time you were able to change lanes and miss hitting the line of bumpy things that separate the lanes
-			</div>
-			<div class="content-box">
-				The proud grin an artist gives her wheatpaste when walking by on an autumn afternoon in Portland
-			</div>
-			<div class="content-box">
-				The expanse of meteors and rolling hills and radio antennas and broken vehicles in the scablands, shrub steppe wailing in the distance
-			</div>
-			<div class="content-box">
-				The moment you cross above the cloud line while driving up the side of an active volcano in the middle of the pacific
-			</div>
-			<div class="content-box">
-				The unexplainable event on Highway 10 between Vidor and Shreveport involving possible time dialation and unconventional propulsion
-			</div>
-
-			<div class="content-box">
-			Share your light
-			</div>
-
+		<div class="col-md-9">
+			<%= render partial: 'points' %>
+		</div>
+		<div class="col-md-3">
+			<%= render partial: 'login' %>
+			<%= render partial: 'join' %>
+			<%= render partial: 'active_today' %>
 		</div>
 	</div>
 </div>

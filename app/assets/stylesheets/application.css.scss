@@ -12,6 +12,7 @@
 	border: 0px solid #000;
 	border-bottom: 1px solid #616070;
 	border-radius: 0px;
+	margin-bottom: 0px;
 }
 
 .navbar-default .navbar-brand {
@@ -35,6 +36,20 @@
 
 
 
+.container {
+	margin-top: 1em;
+}
+
+.container.guest {
+	margin-top: 0em;
+}
+
+.alert {
+	margin-bottom: 0px;
+}
+
+
+
 .content-box {
 	background-color: #FFF;
 	color: #333;
@@ -52,6 +67,35 @@
 
 .content-box a.btn {
 	color: white;
+}
+
+.content-box.landing .text-field {
+	margin-bottom: 5px;
+}
+
+.hero.content-box {
+	text-align: center
+}
+
+.hero img {
+	width: 400px;
+	height: 96px;
+	margin: 0.5em 0em;
+}
+
+
+
+
+
+.devise h1 {
+	margin-top: 0em;
+}
+.devise .content-box {
+	margin-top: 6em;
+	margin-bottom: 4em;
+}
+.devise .text-field {
+	margin-bottom: 5px;
 }
 
 .form-group > label {
@@ -84,6 +128,12 @@
 	border-bottom: 1px solid #DDD;
 }
 
+h3.username {
+	border-bottom: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
 .profile img {
 	margin-bottom: 1em;
 	height: 182px;
@@ -96,6 +146,10 @@
 
 .profile .btn {
 	width: 182px;
+}
+
+.profile .btn-edit {
+	margin-top: 1em;
 }
 
 .profile ul, .landing ul {
