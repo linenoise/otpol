@@ -32,4 +32,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def update_last_seen_time
+    # TODO there are better ways to do this (e.g. memcache, redis, etc), 
+    # once there's more infrastructure than a free Heroku instance.
+    #
+    # For now, knowing who's around is an important part of building community.
+
+    if user_signed_in?
+      current_user.last_seen_at = 0.days.ago
+      current_user.save
+    end
+  end
+
 end
