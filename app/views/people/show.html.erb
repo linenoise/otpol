@@ -18,18 +18,25 @@
 				<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary' %>
 				<% else %>
 
+				<!--
 				TODO add follow and unfollow buttons here.
+				-->
 
 				<% end %>
 			</div>
 
 			<div class="content-box">
 
-				<% [:bio, :mission, :motto, :affiliations, :place, :website].each do |blurb| %>
+				<% [:bio, :mission, :motto, :affiliations, :place].each do |blurb| %>
 					<% unless @person.send(blurb).to_s.empty? %>
 					<strong><%= blurb.capitalize %></strong><br />
 					<p><%= h @person.send(blurb) %></p>
 					<% end %>
+				<% end %>
+
+				<% unless @person.website.to_s.empty? %>
+				<strong>Website</strong><br />
+				<p><a href="<%= h @person.website %>"><%= h @person.website %></a></p>
 				<% end %>
 
 				<% if @person.email_is_public %>
@@ -37,7 +44,7 @@
 					<p><a href="mailto:<%= @person.email %>"><%= @person.email %></a></p>
 				<% end %>
 
-				<strong>Joined on</strong><br />
+				<strong>Joined</strong><br />
 				<p><%= @person.created_at.strftime("%B %d, %Y") %></p>
 
 				<strong>Last seen</strong><br />
@@ -45,10 +52,19 @@
 
 			</div>
 
+
+<!-- 			<div class="content-box">
+			<h3>Following</h3>
+			TODO
+			</div>
+ -->
+
+
 			<% if current_user.id == @person.id %>
 			<div class="content-box">
+				<h3>Account</h3>
 				<ul>
-					<li><%= link_to "Account settings", edit_user_registration_path %></li>
+					<li><%= link_to "Settings", edit_user_registration_path %></li>
 					<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
 				</ul>
 			</div>

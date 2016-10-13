@@ -1,4 +1,14 @@
 <div class="content-box point">
+	<div class="actions">
+		<% if current_user.id == point.user.id %>
+	        <%= link_to 'Edit', edit_point_path(point) %>
+	        &middot;
+        	<%= link_to 'Delete', point_path(point),
+                    :method => 'delete',
+                    :data => { :confirm => 'Are you sure? This can\'t be undone!' } %>
+		<% end %>
+	</div>
+
 	<div class="author">
 		Shared by <%= link_to point.user.display_name, person_path(:id => current_user.username ) %>
 		on <%= point.created_at.strftime("%B %d, %Y") %>
@@ -8,21 +18,15 @@
 		<%= h point.description %>
 	</div>
 	
-	<hr />
+<!-- 	<hr />
 
-	<div class="actions">
-		<% if current_user.id == point.user.id %>
-	        <%= link_to 'Edit', edit_point_path(point) %>
-	        &middot;
-        	<%= link_to 'Delete', point_path(point),
-                    :method => 'delete',
-                    :data => { :confirm => 'Are you sure? This can\'t be undone!' } %>
-
-		<% else %>
-
-		<% end %>
-	</div>
+	<div class="interactions">
+		TODO Likes
+	</div> -->
 	
+<!-- 	<hr />
+
 	<div class="responses">
-	</div>
+		TODO Comments
+	</div> -->
 </div>
