@@ -1,27 +1,71 @@
 /*
-* This is a manifest file that'll be compiled into application.css, which will include all the files
-* listed below.
-*
-* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
-* or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
-*
-* You're free to add application-wide styles to this file and they'll appear at the bottom of the
-* compiled file so the styles you add here take precedence over styles defined in any styles
-* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
-* file per style scope.
-*
 *= require_tree .
 *= stub active_admin
-
 *= require_self
 */
 @import "bootstrap_configuration";
-
 @import "bootstrap-sprockets";
-
 @import "bootstrap";
 
-//->Prelang (ui_framework:twitter_bootstrap)
+.navbar {
+	background-color: #14162d;
+	border: 0px solid #000;
+	border-bottom: 1px solid #616070;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
+	color: #EEE;
+	font-size: 14pt;
+}
+
+.navbar-default .navbar-nav > li > a {
+	font-size: 10pt;
+}
+
+.navbar-default a.navbar-brand:hover, .navbar-default .navbar-nav > li > a:hover {
+	color: #fffcf3;
+}
+
+.content-box {
+	background-color: #FFF;
+	color: #333;
+	padding: 1em;
+	margin-bottom: 1em;
+	border-radius: 5px;
+	border: 1px solid #DDD;
+	border-top-color: #E6E6E6;
+	border-bottom-color: #C7C7C7;
+}
+
+
+.footer {
+	text-align: center;
+	background-color: #efeef2;
+	border: 0px;
+	padding: 0em;
+	color: #777;
+	font-size: 10pt;
+}
+
+hr.footer {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.footer > img {
+	height: 70px;
+	width: 70px;
+}
+
+
+
+
+
+
+
+
 
 // Give everything in 'yield' margin to separate it.
 .yield {
@@ -33,7 +77,6 @@
   max-width: 750px;
 }
 
-//->Prelang (user_login:devise)
 .form-user {
   max-width: 450px;
 }
