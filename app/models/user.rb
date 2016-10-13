@@ -4,18 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :trackable, :validatable
   attr_accessor :login
-  
-  #->Prelang (user_login:devise/username_login_support)
-  belongs_to :place
-  def self.find_first_by_auth_conditions(warden_conditions)
-    conditions = warden_conditions.dup
-    if login = conditions.delete(:login)
-      where(conditions).where(["lower(username) = :value OR lower(email) = :value", {value: login.downcase}]).first
-    else
-      where(conditions).first
-    end
-  end
+
+  has_many :points
+
+  # Image attachments
+  has_attached_file :avatar, styles: {
+    thumb: '100x100#',
+    square: '250x250#',
+  }
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   devise authentication_keys: [:login]
-  validates_formatting_of :website, using: :url, allow_nil: true
+  validates_formatting_of :website, using: :url, allow_nil: true, allow_blank: true
 end
