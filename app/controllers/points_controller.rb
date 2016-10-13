@@ -94,6 +94,6 @@ class PointsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def point_params
-      params.require(:point).permit(:user_id, :description, :happened_at, :place_id)
+      params.require(:point).permit(:user_id, :description)
     end
 end

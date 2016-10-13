@@ -7,7 +7,6 @@
     <tr>
       <th>ID</th>
       <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:happened_at) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -17,7 +16,6 @@
       <tr>
         <td><%= point.id %></td>
         <td><%= point.description %></td>
-        <td><%= point.happened_at %></td>
         <td><%=l point.created_at, format: :long %></td>
         <td>
           <%= link_to point_path(point), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>

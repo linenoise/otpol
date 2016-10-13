@@ -4,8 +4,7 @@ RSpec.describe "points/new", type: :view do
   before(:each) do
     assign(:point, Point.new(
       :user => nil,
-      :description => "MyText",
-      :place => nil
+      :description => "MyText"
     ))
   end
 
@@ -17,8 +16,6 @@ RSpec.describe "points/new", type: :view do
       assert_select "input#point_user_id[name=?]", "point[user_id]"
 
       assert_select "textarea#point_description[name=?]", "point[description]"
-
-      assert_select "input#point_place_id[name=?]", "point[place_id]"
     end
   end
 end
