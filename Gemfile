@@ -36,6 +36,11 @@ gem 'simple_form'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 
+### Image uploads
+gem 'paperclip'
+gem 'rmagick'
+gem 'aws-sdk', '< 2.0' # http://stackoverflow.com/questions/28374401/nameerror-uninitialized-constant-paperclipstorages3aws
+
 ### JavaScript
 
 gem 'coffee-rails', '~> 4.0.0'
