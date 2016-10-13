@@ -1,0 +1,82 @@
+<%= form_for @person, 
+             url: person_path(current_user.username), 
+             :html => { :class => 'form-horizontal form-model' } do |f| 
+  %>
+
+  <!-- Avatar -->
+  <div class="form-group">
+    <%= f.label :avatar, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.file_field :avatar, :class => 'text-field form-control' %>
+    </div>
+  </div>
+
+  <!-- Bio -->
+  <div class="form-group">
+    <%= f.label :bio, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :bio, :class => 'text-field form-control' %>
+    </div>
+  </div>
+
+  <!-- Mission -->
+  <div class="form-group">
+    <%= f.label :mission, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :mission, :class => 'text-field form-control' %>
+      <div class="form-hint">What are you seeking from this community?</div>
+    </div>
+  </div>
+
+  <!-- Motto -->
+  <div class="form-group">
+    <%= f.label :motto, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :motto, :class => 'text-field form-control' %>
+    </div>
+  </div>
+
+  <!-- Place -->
+  <div class="form-group">
+    <%= f.label :place, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      TODO place_id
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <%= f.label :email, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+	    <div class="content-box", style="padding-bottom: 0px; margin-bottom: 0px;">
+	      <p><%= @person.email %></p>
+	      <p>
+
+		    	<%= f.check_box(:email_is_public) %>
+					<%= label_tag(:email_is_public, "Show this email address on your profile?", style: 'padding-bottom: 0px;') %>
+			  
+			  </p>
+	    </div>
+      <div class="form-hint">You may also <%= link_to "change the email address associated with your account", edit_user_registration_path() %>.</div>
+    </div>
+  </div>
+
+  <!-- Website -->
+  <div class="form-group">
+    <%= f.label :website, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :website, :class => 'text-field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  person_path(:id => current_user.username ), :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>
