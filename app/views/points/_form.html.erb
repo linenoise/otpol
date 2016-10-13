@@ -1,16 +1,7 @@
 <%= form_for @point, :html => { :class => 'form-horizontal form-model' } do |f| %>
-  <div class="form-group">
-    <%= f.label :description, :class => 'control-label col-md-2' %>
-    <div class="col-md-10">
-      <%= f.text_area :description, :class => 'text-field form-control' %>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <div class='col-md-offset-2 col-md-10'>
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  points_path, :class => 'btn btn-default' %>
-    </div>
-  </div>
+    <%= f.text_area :description, :class => 'text-field form-control new-point' %>
+
+    <%= f.submit 'Share your light', :class => 'btn btn-primary' %>
+
 <% end %>

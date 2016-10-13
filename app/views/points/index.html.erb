@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="content-box profile">
+			<%= render partial: 'points/new' %>
+			</div>
+
+			<% @points.each do |point| %>
+			<%= render partial: 'points/point', locals: {point: point} %>
+			<% end %>
+		</div>
+	</div>
+</div>
