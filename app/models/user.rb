@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
   devise authentication_keys: [:login]
-  validates_formatting_of :website, using: :url
+  validates_formatting_of :website, using: :url, allow_nil: true
 end
