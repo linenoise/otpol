@@ -10,9 +10,10 @@
 	</div>
 
 	<div class="author">
-		<%= link_to point.user.display_name, person_path(:id => point.user.username ) %><br />
-		<%= point.moment %>, 
-		<strong><%= point.location %></strong>
+		<%= link_to point.user.display_name, person_path(:id => point.user.username ) %><% unless point.accomplices.to_s.empty? %>, <%= h point.accomplices %><% end %>
+		<br />
+		<%= h point.moment %>, 
+		<strong><%= h point.location %></strong>
 	</div>
 
 	<div class="description">
@@ -20,11 +21,11 @@
 	</div>
 
 	
-<!-- 	<hr />
+	<hr />
 
 	<div class="interactions">
 		TODO Likes
-	</div> -->
+	</div>
 	
 <!-- 	<hr />
 

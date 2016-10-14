@@ -2,7 +2,7 @@ class Point < ActiveRecord::Base
   belongs_to :user
   acts_as_votable 
 
-  validates :description, length: { in: 128..512 }
+  validates :description, length: { in: 64..512 }
   validates :description, format: { with: /\A[Tt]he/,
     								message: "should begin with the word \"The\"" }
   validates :description, format: { with: /[^\.\,\?\!\:\;]\z/,

@@ -98,7 +98,7 @@ class PointsController < ApplicationController
   end
 
   def point_params
-    params.require(:point).permit(:description, :location, :moment)
+    params.require(:point).permit(:description, :location, :moment, :accomplices)
   end
 
   def require_user_is_owner
