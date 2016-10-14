@@ -22,12 +22,8 @@ class User < ActiveRecord::Base
   ### Scopes
 
   scope :newcomers, -> { 
-    where("created_at" => 3.days.ago..0.days.ago)
+    where("created_at" => 3.days.ago..0.days.ago).order("created_at DESC")
   }
-  scope :active, -> { 
-    where("last_seen_at" => 1.days.ago..0.days.ago)
-  }
-
 
   ### Attributes
 
@@ -61,6 +57,27 @@ class User < ActiveRecord::Base
   end
 
 
+  ### Points
+
+  def timeline
+    timeline_points = self.points.all
+    self.following.each do |followed_user|
+      timeline_points.push(followed_user.points.all)
+    end
+    timeline_points.flatten.sort {|x,y| y.created_at <=> x.created_at}
+  end
+
+  def self.active_recently
+    Point.joins(:user)
+      .where("points.created_at" => 7.days.ago..0.days.ago)
+      .group("users.username")
+      .order("count_all DESC")
+      .count()
+      .map{|row| [
+        self.find_by_username(row[0]),
+        row[1]
+      ]}
+  end
 
   ### Blocking
 

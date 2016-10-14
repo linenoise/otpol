@@ -17,8 +17,7 @@
     <ul class="nav navbar-nav navbar-right">
       <% if defined?(Devise) %>
         <% if user_signed_in? %>
-          <li><%= link_to "home", root_path() %></li>
-          <li><%= link_to "profile", person_path(:id => current_user.username ) %></li>
+          <li><%= link_to current_user.display_name, person_path(:id => current_user.username ) %></li>
         <% else %>
           <li><%= link_to "login", new_user_session_path %></li>
           <li><%= link_to "join", new_user_registration_path %></li>

@@ -1,12 +1,12 @@
 class LandingsController < ApplicationController
   def index
-  	@points = Point.all
-  	@active_today = User.active.sort { |x, y| x.display_name <=> y.display_name } 
-  	@newcomers = User.newcomers.sort { |x, y| x.display_name <=> y.display_name }
-
+    @active_recently = User.active_recently
   	if user_signed_in?
+      @points = current_user.timeline
+      @newcomers = User.newcomers
   		render :home
   	else
+      @points = Point.timeline
   		render :guest
   	end
   end

@@ -22,9 +22,6 @@
 				    <% elsif current_user.can_follow(@person) %>
 					    <%= link_to 'Follow', follow_user_path(@person.username), class: "btn btn-primary btn-edit" %>
 				    <% end %>
-
-<!-- 				    TODO message user -->
-
 				<% end %>
 			</div>
 

@@ -26,7 +26,7 @@ class PointsController < ApplicationController
   # POST /points.json
   def create
     @point = Point.new(point_params)
-    @point.user = current_user
+    @point.user_id = current_user.id
 
     respond_to do |format|
       if @point.save

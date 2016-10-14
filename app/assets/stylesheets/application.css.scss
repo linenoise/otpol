@@ -183,6 +183,31 @@ img.thumbnail {
 	display: inline;
 }
 
+.active.person {
+    white-space: nowrap;
+    overflow: hidden;
+   	height: 60px;
+}
+
+.active.person .thumbnail {
+	float: left;
+}
+
+.active.person .name {
+	font-weight: bold;
+}
+
+.landing hr {
+	margin: 0em 0em .75em 0em;
+    border: 0;
+    height: 1px;
+    background: #DDD;
+    // background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.landing > a {
+	font-weight: bold;
+}
 
 
 .point > .author {
