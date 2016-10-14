@@ -364,6 +364,7 @@ DEPENDENCIES
   factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   nokogiri (= 1.6.1)
   omniauth
   omniauth-facebook
