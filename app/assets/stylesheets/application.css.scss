@@ -7,31 +7,55 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
+@font-face {
+	font-family: 'avenir';
+	font-style: normal;
+	font-weight: normal;
+//	src: local('Avenir Next LT Pro Medium'), url('AvenirNextLTPro-Regular.woff') format('woff');
+	src: url('AvenirNextLTPro-Medium.eot?#iefix') format('embedded-opentype'), 
+	     url('AvenirNextLTPro-Medium.woff') format('woff'), 
+	     url('AvenirNextLTPro-Medium.ttf') format('truetype'), 
+	     url('AvenirNextLTPro-Medium.svg') format('svg');
+}
+
+
+  
+
+
+h1, h2, h3, h4, h5, .btn-join {
+	font-family: 'avenir';
+	font-weight: bold;
+}
+
+body {
+	font-family: helvetica, arial, sans-serif;
+}
+
+
+
 .navbar {
 	background-color: #14162d;
 	border: 0px solid #000;
-	border-bottom: 1px solid #616070;
+	border-bottom: 2px solid #BBB;
 	border-radius: 0px;
 	margin-bottom: 0px;
 }
 
-.navbar-default .navbar-brand {
-	padding-top: 7px;
+.navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
+	margin: 2px 0.5em 0px 0.5em;
+	font-family: 'avenir';
+	font-size: 14pt;
+	color: #E6E6E6;
 }
 
-.navbar-default .navbar-nav > li > a {
-	font-size: 10pt;
-	font-weight: lighter;
-	letter-spacing: 1px;
-	color: #EEE;
-}
-
-.navbar-default .navbar-nav > li > a:hover {
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li > a:hover {
 	color: #fffcf3;
 }
 
 .navbar-right {
-	margin-right: 0px;
+	margin-right: 0.5em;
 }
 
 
@@ -77,13 +101,37 @@
 	text-align: center
 }
 
-.hero img {
-	width: 400px;
-	height: 96px;
-	margin: 0.5em 0em;
+.hero .brand {
+	font-family: 'avenir';
+	font-weight: bold;
+	font-size: 22pt;
+	// width: 400px;
+	// height: 96px;
+	// margin: 0.5em 0em;
 }
 
+.hero img.logo {
+	width: 100px;
+	height: 100px;
+	margin: 0.5em 0.5em 0em 0,5em;
+}
 
+.hero hr {
+	margin: 0.5em auto 1.5em auto;
+    border: 0;
+    height: 7px;
+    width: 92px;
+    background: #333;	
+}
+
+.hero p {
+	font-family: 'avenir';
+	font-size: 14pt;
+}
+
+.hero .btn-join {
+	margin-top: 0.75em;
+}
 
 
 
@@ -91,11 +139,15 @@
 	margin-top: 0em;
 }
 .devise .content-box {
-	margin-top: 6em;
-	margin-bottom: 4em;
+	margin-top: 4em;
+	margin-bottom: 6em;
 }
 .devise .text-field {
 	margin-bottom: 5px;
+}
+.devise .btn-primary {
+	width: 100%;
+	text-align: left;
 }
 
 .form-group > label {
@@ -112,7 +164,6 @@
 
 
 
-
 .profile h2, .landing h2 {
 	font-size: 24px;
 	margin-top: 0em;
@@ -121,7 +172,6 @@
 
 .profile h3, .landing h3 {
 	font-size: 18px;
-	font-weight: normal;
 	margin-top: 0em;
 	margin-bottom: 0.5em;
 	padding-bottom: 0.5em;
@@ -144,7 +194,7 @@ h3.username {
 	border-bottom-color: #C7C7C7;
 }
 
-.profile .btn {
+.profile .btn, form .btn {
 	width: 182px;
 }
 
@@ -216,9 +266,11 @@ img.thumbnail {
 	font-style: oblique;
 }
 
-.point > .description {
-	padding: 1.5em 3em;
+.point > .description, textarea.new-point {
+	font-size: 16pt;
+	padding: 32px 64px;
 }
+
 
 .point > hr {
 	margin: 0.5em 0em;
@@ -239,39 +291,27 @@ textarea.new-point {
 	margin-bottom: 1em;
 }
 
-
-
-
+.new-point .text-field {
+	margin-bottom: 10px;
+}
 
 
 
 
 .footer {
 	text-align: center;
-	background-color: #efeef2;
-	border: 0px;
-	padding: 0em;
 	color: #777;
 	font-size: 10pt;
 }
 
-
-
-
-hr.footer {
-    border: 0;
-    height: 1px;
-    background: #333;
-    background-image: linear-gradient(to right, #ccc, #333, #ccc);
-}
-
-.footer > img {
+.footer img {
 	height: 70px;
 	width: 70px;
 }
 
-
-
+.footer h3 {
+	text-align: left;
+}
 
 
 
