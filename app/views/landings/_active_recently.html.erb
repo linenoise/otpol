@@ -1,0 +1,17 @@
+<div class="content-box landing">
+	<h3>Active recently</h3>
+	<ul>
+		<% @active_recently.each do |user, count_all| %>
+		<li class="active person">
+			<a href="<%= person_path(:id => user.username) %>">
+			    <%= image_tag(user.avatar.url(:thumb), class: 'thumbnail') %>
+				<span class="name"><%= user.display_name %></span><br />
+				(<%= count_all %> new)
+			</a>
+		</li>
+		<% end %>
+	</ul>
+	<hr />
+	<%= link_to 'All points of light', points_path() %>
+</div>
+
