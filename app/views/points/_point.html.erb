@@ -10,13 +10,15 @@
 	</div>
 
 	<div class="author">
-		Shared by <%= link_to point.user.display_name, person_path(:id => point.user.username ) %>
-		on <%= point.created_at.strftime("%B %d, %Y") %>
+		<%= link_to point.user.display_name, person_path(:id => point.user.username ) %><br />
+		<%= point.moment %>, 
+		<strong><%= point.location %></strong>
 	</div>
-	
+
 	<div class="description">
 		<%= h point.description %>
 	</div>
+
 	
 <!-- 	<hr />
 

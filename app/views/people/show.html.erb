@@ -4,9 +4,7 @@
 
 			<div class="content-box header">
 
-				<% unless @person.avatar_content_type.to_s.empty? %>
 				<%= image_tag @person.avatar.url(:square) %>
-				<% end %>
 
 				<% unless @person.name.to_s.empty? %>
 				<h2><%= @person.name %></h2>
@@ -14,14 +12,16 @@
 
 				<h3 class="username">@<%= @person.username %></h3>
 
-				<% if user_signed_in? && current_user.id == @person.id %>
-					<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary btn-edit' %>
-				<% else %>
-				    <% if current_user.is_following(@person) %>
-					    <%= link_to 'Unfollow', unfollow_user_path(@person.username), class: "btn btn-default btn-edit" %>
-				    <% elsif current_user.can_follow(@person) %>
-					    <%= link_to 'Follow', follow_user_path(@person.username), class: "btn btn-primary btn-edit" %>
-				    <% end %>
+				<% if user_signed_in? %>
+					<% if current_user.id == @person.id %>
+						<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary btn-edit' %>
+					<% else %>
+					    <% if current_user.is_following(@person) %>
+						    <%= link_to 'Unfollow', unfollow_user_path(@person.username), class: "btn btn-default btn-edit" %>
+					    <% elsif current_user.can_follow(@person) %>
+						    <%= link_to 'Follow', follow_user_path(@person.username), class: "btn btn-primary btn-edit" %>
+					    <% end %>
+					<% end %>
 				<% end %>
 			</div>
 
@@ -60,20 +60,23 @@
 			</div>
 			<% end %>
 
-			<% if user_signed_in? %>
+			<% if user_signed_in? && current_user.id == @person.id %>
 			<div class="content-box">
 				<h3>Account</h3>
 				<ul>
-				<% if current_user.id == @person.id %>
 					<li><%= link_to "Settings", edit_user_registration_path %></li>
-					<li><%= link_to "Blocked people", block_list_path %></li>
 					<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-				<% else %>
-					<li><%= link_to 'Block user', block_user_path(@person.username), data: { confirm: "Are you sure you would like to block this user?" } %></li>
-				<% end %>
+
+					<!-- 
+					<li><%= link_to "Blocked people", block_list_path %></li>
+					<li><%= link_to 'Block user', block_user_path(@person.username), data: { confirm: "Are you sure you would like to block this user?" } %></li> 
+					-->
 				</ul>
 			</div>
 			<% end %>
+
+			<%= render partial: 'landings/footer' %>
+
 		</div>
 
 		<div class="col-md-9">

@@ -61,12 +61,14 @@ class PeopleController < ApplicationController
     end
 
     def deflect_blocked_users
-      @user = User.find_by_username(params[:id])
-      unless @user
-        raise ActiveRecord::RecordNotFound
-      end
-      if current_user.is_blocked_from(@user)
-        redirect_to root_path
+      if user_signed_in?
+        @user = User.find_by_username(params[:id])
+        unless @user
+          raise ActiveRecord::RecordNotFound
+        end
+        if current_user.is_blocked_from(@user)
+          redirect_to root_path
+        end
       end
     end
 

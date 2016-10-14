@@ -1,16 +1,24 @@
 <div class="hero content-box">
-    <img src="<%=image_path('otpol_brand.png')%>" />
+	<img class="logo" src="<%=image_path('otpol.png')%>" alt="Otpol" /><br />
+    <div class="brand">We share ephemeral stories</div>
+    <hr />
+    <p>
+    	One thousand points of light is<br />
+    	an experiment in textured, familiar,<br />
+    	impermanent prose of the senses.<br />
+	</p>
+	<%= link_to 'Join in and make light!', new_user_registration_path, class: "btn btn-primary btn-join" %>
 </div>
 
 <div class="guest landing container">
 	<div class="row">
-		<div class="col-md-9">
-			<%= render partial: 'points' %>
-		</div>
 		<div class="col-md-3">
 			<%= render partial: 'login' %>
 			<%= render partial: 'active_recently' %>
-			<%= render partial: 'join' %>
+			<%= render partial: 'footer' %>
+		</div>
+		<div class="col-md-9">
+			<%= render partial: 'points' %>
 		</div>
 	</div>
 </div>

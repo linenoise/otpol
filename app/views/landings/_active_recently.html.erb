@@ -1,5 +1,5 @@
 <div class="content-box landing">
-	<h3>Active recently</h3>
+	<h3>Activity</h3>
 	<ul>
 		<% @active_recently.each do |user, count_all| %>
 		<li class="active person">
@@ -12,6 +12,6 @@
 		<% end %>
 	</ul>
 	<hr />
-	<%= link_to 'All points of light', points_path() %>
+	<%= link_to 'All entries', points_path() %>
 </div>
 
