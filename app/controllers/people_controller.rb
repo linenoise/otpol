@@ -1,8 +1,10 @@
 class PeopleController < ApplicationController
 
-  before_filter :require_user_signed_in, only: [:edit, :update]
-  before_action :set_self, only: [:edit, :update]
+  before_filter :require_user_signed_in, only: [:edit, :update, :blocked]
+  before_action :set_self, only: [:edit, :update, :blocked]
+
   before_action :update_last_seen_time, only: [:update]
+  before_action :deflect_blocked_users, only: [:show, :following]
 
   # GET /people/1
   # GET /people/1.json
@@ -13,6 +15,14 @@ class PeopleController < ApplicationController
     unless @person
       raise ActiveRecord::RecordNotFound
     end
+  end
+
+  # GET /people/1/blocked
+  # GET /people/1/blocked.json
+  #
+  # Shows an editable list of people current_user has blocked
+  def blocked
+    @block_list = current_user.blocks
   end
 
   # GET /people/1/edit
@@ -48,6 +58,16 @@ class PeopleController < ApplicationController
 
     def user_params
       params.require(:user).permit(:avatar, :bio, :mission, :motto, :website, :place, :name, :affiliations, :email_is_public)
+    end
+
+    def deflect_blocked_users
+      @user = User.find_by_username(params[:id])
+      unless @user
+        raise ActiveRecord::RecordNotFound
+      end
+      if current_user.is_blocked_from(@user)
+        redirect_to root_path
+      end
     end
 
 end

@@ -26,4 +26,11 @@ Rails.application.routes.draw do
     get    "account" => "users/registrations#edit",   as: :edit_user_registration
   end
 
+  ### Relationships
+  get 'rel/block/:id',     to: 'relationships#block',         as: 'block_user'
+  get 'rel/unblock/:id',   to: 'relationships#unblock',       as: 'unblock_user'
+  get 'people/:id/blocked',to: 'people#blocked',              as: 'block_list'
+  get 'rel/follow/:id',    to: 'relationships#follow',        as: 'follow_user'
+  get 'rel/unfollow/:id',  to: 'relationships#unfollow',      as: 'unfollow_user'
+
 end

@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-3">
 
-			<div class="content-box">
+			<div class="content-box header">
 
 				<% unless @person.avatar_content_type.to_s.empty? %>
 				<%= image_tag @person.avatar.url(:square) %>
@@ -15,12 +15,15 @@
 				<h3 class="username">@<%= @person.username %></h3>
 
 				<% if user_signed_in? && current_user.id == @person.id %>
-				<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary btn-edit' %>
+					<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary btn-edit' %>
 				<% else %>
+				    <% if current_user.is_following(@person) %>
+					    <%= link_to 'Unfollow', unfollow_user_path(@person.username), class: "btn btn-default btn-edit" %>
+				    <% elsif current_user.can_follow(@person) %>
+					    <%= link_to 'Follow', follow_user_path(@person.username), class: "btn btn-primary btn-edit" %>
+				    <% end %>
 
-				<!--
-				TODO add follow and unfollow buttons here.
-				-->
+<!-- 				    TODO message user -->
 
 				<% end %>
 			</div>
@@ -53,24 +56,27 @@
 			</div>
 
 
-<!-- 			<div class="content-box">
-			<h3>Following</h3>
-			TODO
-			</div>
- -->
-
-
-			<% if user_signed_in? && current_user.id == @person.id %>
-			<div class="content-box">
-				<h3>Account</h3>
-				<ul>
-					<li><%= link_to "Settings", edit_user_registration_path %></li>
-					<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-				</ul>
+			<% if @person.following_count > 0 %>
+ 			<div class="content-box">
+				<h3>Following</h3>
+				<%= render partial: 'people/thumbnail', collection: @person.following.first(9) %>
 			</div>
 			<% end %>
 
-
+			<% if user_signed_in? %>
+			<div class="content-box">
+				<h3>Account</h3>
+				<ul>
+				<% if current_user.id == @person.id %>
+					<li><%= link_to "Settings", edit_user_registration_path %></li>
+					<li><%= link_to "Blocked people", block_list_path %></li>
+					<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+				<% else %>
+					<li><%= link_to 'Block user', block_user_path(@person.username), data: { confirm: "Are you sure you would like to block this user?" } %></li>
+				<% end %>
+				</ul>
+			</div>
+			<% end %>
 		</div>
 
 		<div class="col-md-9">

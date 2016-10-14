@@ -134,7 +134,7 @@ h3.username {
 	padding-bottom: 0px;
 }
 
-.profile img {
+.profile .header img, img.thumbnail {
 	margin-bottom: 1em;
 	height: 182px;
 	width: 182px;
@@ -150,6 +150,10 @@ h3.username {
 
 .profile .btn-edit {
 	margin-top: 1em;
+}
+
+.profile .btn-default {
+	background-color: #AAA;
 }
 
 .profile ul, .landing ul {
@@ -171,6 +175,13 @@ h3.username {
 	padding-bottom: 0px;
 }
 
+img.thumbnail {
+	margin: 0px 5px 5px 0px;
+	padding: 0px;
+	height: 45px;
+	width: 45px;
+	display: inline;
+}
 
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013183124) do
+ActiveRecord::Schema.define(version: 20161013224906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,19 @@ ActiveRecord::Schema.define(version: 20161013183124) do
   end
 
   add_index "points", ["user_id"], name: "index_points_on_user_id", using: :btree
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["from_user_id", "to_user_id"], name: "index_relationships_on_from_user_id_and_to_user_id", using: :btree
+  add_index "relationships", ["from_user_id", "type"], name: "index_relationships_on_from_user_id_and_type", using: :btree
+  add_index "relationships", ["from_user_id"], name: "index_relationships_on_from_user_id", using: :btree
+  add_index "relationships", ["to_user_id", "type"], name: "index_relationships_on_to_user_id_and_type", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
