@@ -34,4 +34,7 @@ Rails.application.routes.draw do
   get 'rel/follow/:id',    to: 'relationships#follow',        as: 'follow_user'
   get 'rel/unfollow/:id',  to: 'relationships#unfollow',      as: 'unfollow_user'
 
+  ### RSS
+  get 'feed' => 'points#feed'
+
 end

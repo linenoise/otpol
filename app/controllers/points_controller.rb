@@ -13,6 +13,14 @@ class PointsController < ApplicationController
     @points = Point.all
   end
 
+  # GET /feed.rss
+  def feed
+    @points = Point.all.first(50)
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
+  end
+
   # GET /points/1
   # GET /points/1.json
   def show
@@ -95,7 +103,6 @@ class PointsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 
   private
 
