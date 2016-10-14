@@ -1,10 +1,11 @@
 class PointsController < ApplicationController
 
-  before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy, :vote]
-  before_filter :require_user_is_owner,  only: [:edit, :update, :destroy]
+  before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy, :like, :unlike]
+  before_filter :require_user_is_owner, only: [:edit, :update, :destroy]
+  before_filter :require_user_is_not_owner, only: [:like, :unlike]
 
-  before_action :set_point, only: [:show, :edit, :update, :destroy, :vote]
-  before_action :update_last_seen_time, only: [:create, :update, :destroy, :vote]
+  before_action :set_point, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :update_last_seen_time, only: [:create, :update, :destroy, :like, :unlike]
 
   # GET /points
   # GET /points.json
@@ -73,21 +74,26 @@ class PointsController < ApplicationController
     end
   end
 
+  # GET /points/1/like
+  # GET /points/1/like.json
+  def like
+    @point.liked_by current_user
 
-  def vote
-    direction = params[:direction]
-
-    # Make sure we've specified a direction
-    raise "No direction parameter specified to #vote action." unless direction
-
-    # Make sure the direction is valid
-    unless ["like", "bad"].member? direction
-      raise "Direction '#{direction}' is not a valid direction for vote method."
+    respond_to do |format|
+      format.html { redirect_to action: :show, id: params[:id] }
+      format.json { head :no_content }
     end
+  end
 
-    @point.vote_by voter: current_user, vote: direction
+  # GET /points/1/unlike
+  # GET /points/1/unlike.json
+  def unlike
+    @point.unliked_by current_user
 
-    redirect_to action: :index
+    respond_to do |format|
+      format.html { redirect_to action: :show, id: params[:id] }
+      format.json { head :no_content }
+    end
   end
 
 
@@ -101,21 +107,27 @@ class PointsController < ApplicationController
     params.require(:point).permit(:description, :location, :moment, :accomplices)
   end
 
+  def fallback_redirect
+    if request.env['HTTP_REFERER']
+      return :back
+    elsif defined?(root_path)
+      return root_path
+    else
+      return "/"
+    end
+  end
+
   def require_user_is_owner
     @point = Point.find(params[:id])
     unless @point.user.id == current_user.id
-
-      # If the user came from a page, we can send them back.  Otherwise, send
-      # them to the root path.
-      if request.env['HTTP_REFERER']
-        fallback_redirect = :back
-      elsif defined?(root_path)
-        fallback_redirect = root_path
-      else
-        fallback_redirect = "/"
-      end
-
       redirect_to fallback_redirect, flash: {error: "You may not change other users' contributions."}
+    end
+  end
+
+  def require_user_is_not_owner
+    @point = Point.find(params[:id])
+    if @point.user.id == current_user.id
+      redirect_to fallback_redirect, flash: {error: "You may not adjust your own points' reputations."}
     end
   end
 

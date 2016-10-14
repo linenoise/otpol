@@ -17,5 +17,4 @@ class Point < ActiveRecord::Base
   scope :recent, -> { 
   	where("created_at" => 3.days.ago..0.days.ago)
   }
-
 end

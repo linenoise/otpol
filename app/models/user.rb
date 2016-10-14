@@ -59,6 +59,8 @@ class User < ActiveRecord::Base
 
   ### Points
 
+  acts_as_voter
+
   def timeline
     timeline_points = self.points.all
     self.following.each do |followed_user|
