@@ -34,7 +34,7 @@ class PointsController < ApplicationController
         format.json { render :show, status: :created, location: @point }
       else
         format.html { 
-          flash[:notice] = 'There was a problem creating this. ' + @point.errors.full_messages.join(', ')
+          flash[:notice] = 'There was a problem creating this:<br /><br /> ' + @point.errors.full_messages.join(', <br />')
           render :edit 
         }
         format.json { render json: @point.errors, status: :unprocessable_entity }
@@ -98,7 +98,7 @@ class PointsController < ApplicationController
   end
 
   def point_params
-    params.require(:point).permit(:description)
+    params.require(:point).permit(:description, :location, :moment)
   end
 
   def require_user_is_owner
