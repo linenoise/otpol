@@ -43,4 +43,12 @@ class Point < ActiveRecord::Base
   def title
     self.moment.to_s + '; ' + self.location.to_s
   end
+
+  def likers
+    User.select('users.id, users.username, users.name')
+        .joins("LEFT JOIN votes ON votes.voter_id = users.id")
+        .where('votes.votable_id = ?', self.id)
+        .order("votes.created_at DESC")
+  end
+
 end

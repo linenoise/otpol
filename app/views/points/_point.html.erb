@@ -20,40 +20,44 @@
 		<%= h point.description %>
 	</div>
 
+	<!-- If the rep is zero, hide the rep and the liker list. -->
 	<%- reputation = point.get_likes.size %>
 	<%- reputation_id = 'reputation_'+point.id.to_s %>
 	<%- reputation_block_id = 'reputation_block_'+point.id.to_s %>
-	<%- reputation_block_style = '' %>
-	<%- if reputation == 0 %>
-		<%- reputation_block_style = 'display:none' %>
-	<%- end %>
+	<%- reputation_block_style = (reputation == 0) ? 'display:none' : '' %>
+	<%- reputation_likers_id = 'reputation_likers_'+point.id.to_s %>
+	<%- reputation_liker_id = 'reputation_liker_'+point.id.to_s %>
 
-	<% if user_signed_in? %>
-	<% unless reputation == 0 && (current_user.id == point.user.id) %>
+	<!-- If the point is mine OR I'm not logged in, hide the like button. -->
+	<%- liking_block_id = 'liking_block_'+point.id.to_s %>
+	<%- liking_block_style = (user_signed_in? && current_user.id != point.user.id) ? '' : 'display:none' %>
 
-	<hr />
+	<!-- If the like button and the rep are both hidden, hide the entire interaction block. -->	
+	<%- interactions_block_id = 'interactions_block_'+point.id.to_s %>
+	<%- interactions_block_style = (liking_block_style == 'display:none') && (reputation_block_style == 'display:none') ? 'display:none' : '' %>
 
-	<div class="interactions">
+	<div id="<%= interactions_block_id %>" style="<%= interactions_block_style %>">
 
-		<% if user_signed_in? && current_user.id != point.user.id %>
-		<span class="liking">
+		<hr />
+		<div class="interactions">
 
-			<%- like_id = 'like_'+point.id.to_s %>
-			<%- liked = current_user.liked? point %>
-			<input type="hidden" id="liked_<%= point.id.to_s %>" value="<%= liked ? 'true' : 'false' %>"  />
+			<span class="liking" id="<%= liking_block_id %>" style="<%= liking_block_style %>">
+				<% if user_signed_in? %>
+				<%- like_id = 'like_'+point.id.to_s %>
+				<%- liked = current_user.liked? point %>
+				<input type="hidden" id="liked_<%= point.id.to_s %>" value="<%= liked ? 'true' : 'false' %>"  />
+				<input type="hidden" id="reputation_liker_<%= point.id.to_s %>" value="<%= current_user.display_name %>, <%= person_path(current_user.username) %>"  />
 
-			<%- ajax_params = {:id => point.id, :format => :json} %>
-			<%= link_to (liked ? unlike_point_path(ajax_params) : like_point_path(ajax_params)), method: :get, class: 'btn_like', id: like_id, :remote => true do %><%= liked ? 'Unlike' : 'Like'%><% end %>
+				<%- ajax_params = {:id => point.id, :format => :json} %>
+				<%= link_to (liked ? unlike_point_path(ajax_params) : like_point_path(ajax_params)), method: :get, class: 'btn_like', id: like_id, :remote => true do %><%= liked ? 'Unlike' : 'Like'%><% end %>
+				<% end %>
+			</span>
 
-		</span>
-		<% end %>
+			<span id="<%=reputation_block_id %>" style="<%= reputation_block_style %>">
+				<span id="<%= reputation_id %>" style="display:none"><%= reputation %></span>
+				Liked by <span id="<%= reputation_likers_id %>" ><%= raw( point.likers.map{|person| link_to(person.display_name, person_path(person.username))}.join(', ')) %></span>
+			</span>
 
-		<span id="<%=reputation_block_id %>" style="<%= reputation_block_style %>">Reputation: 
-			<span id="<%= reputation_id %>"><%= reputation %></span>
-		</span>
-
+		</div>
 	</div>
-	<% end %>
-	<% end %>
-
 </div>

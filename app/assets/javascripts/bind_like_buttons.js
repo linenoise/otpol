@@ -16,7 +16,7 @@ $(document).ready(function() {
 		reputation = parseInt($('#reputation_'+point_id).html());
 
 		// Change the innerHTML of the a.btn_like#like_id
-		$('#'+like_id).html( liked ? 'Like' : 'Unike' );
+		$('#'+like_id).html( liked ? 'Like' : 'Unlike' );
 
 		// Change the AJAX target between like_point_path and unlike_point_path
 		$('#'+like_id).attr("href", "/points/"+point_id+"/"+(liked?'like':'unlike')+".json");
@@ -32,6 +32,24 @@ $(document).ready(function() {
 			$('#reputation_block_'+point_id).hide();
 		} else {
 			$('#reputation_block_'+point_id).show();
+		}
+
+		// If they are liking it, 
+		if(liked == false) {
+
+			// figure out who they are, then
+			[display_name, profile_url] = $('#reputation_liker_'+point_id).val().split(', ');
+
+			// append their name to the liker list.
+			current_user_link = '<a href="'+profile_url+'">'+display_name+'</a>';
+			likers = $('#reputation_likers_'+point_id).html().split(', ');
+			if (likers.length == 1 && likers[0] == "") {
+				likers = [];
+			}
+			if (current_user_link != likers[likers.length-1]) {
+				likers.unshift(current_user_link);
+			}
+			$('#reputation_likers_'+point_id).html(likers.join(', '));
 		}
 	});
 });
