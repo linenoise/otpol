@@ -4,7 +4,7 @@ lock '3.6.1'
 set :application, 'otpol'
 set :repo_url, 'git@github.com:linenoise/otpol.git'
 
-server '45.79.77.152', port: your_port_num, roles: [:web, :app, :db], primary: true
+server '45.79.77.152', port: 22, roles: [:web, :app, :db], primary: true
 set :user,            'linenoise'
 
 set :puma_threads,    [4, 16]
