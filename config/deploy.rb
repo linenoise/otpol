@@ -10,6 +10,8 @@ set :user,            'linenoise'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
+append :linked_files, '.env'
+
 # Default value for :linked_files is []
 # append :linked_files, 'config/database.yml', 'config/secrets.yml'
 
