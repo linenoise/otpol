@@ -4,6 +4,7 @@
       <div class="devise">
         <div class="content-box">
           <h1>A modest request</h1>
+          <p>By joining, you agree to our <%= link_to 'Privacy Policy', legal_privacy_path() %> and <%= link_to 'Terms of Service', legal_terms_path() %>.</p>
           <%= render partial: 'devise/registrations/form' %>
         </div>
       </div>

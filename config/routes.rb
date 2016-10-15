@@ -56,9 +56,6 @@ Rails.application.routes.draw do
 
   ### Guides
 
-  get 'guide/api',         to: 'guide#api',               as: 'api_guide'
-  get 'guide/about',       to: 'guide#about',             as: 'about_guide'
   get 'guide/contact',     to: 'guide#contact',           as: 'contact_guide'
-  get 'guide/welcome',     to: 'guide#welcome',           as: 'welcome_guide'
 
 end

@@ -5,10 +5,11 @@
 ================================================== 
 || Table of Contents
 ||
-|| * Anchor links
-|| * Body
+|| + Anchor links
+|| + Body
 || + Buttons
 || + Containers
+|| + Documents
 || + Flash messages
 || + Footer
 || + Forms
@@ -41,6 +42,7 @@ body {
 	background-color: $body-color;
 	color: $text-color;
 	font-family: helvetica, arial, sans-serif;
+	padding-bottom: 2em;
 }
 
 /* Buttons
@@ -75,6 +77,13 @@ body {
 
 .container.guest {
 	margin-top: 0em;
+}
+
+/* Documents
+================================================== */
+
+.document ul {
+	list-style-type: circle;
 }
 
 /* Flash messages
@@ -160,7 +169,7 @@ hr.footer {
 .header .content-box > a:hover, 
 .header .content-box > a:active,
 .header .content-box > a:link {
-	color: #333;
+	// color: #333;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -229,6 +238,7 @@ img.thumbnail {
 
 .container .paginator {
 	text-align: center;
+	padding-bottom: 2em;
 }
 
 nav.pagination {
