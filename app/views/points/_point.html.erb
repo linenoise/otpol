@@ -21,8 +21,8 @@
 	</div>
 
 	<%- reputation = point.get_likes.size %>
-	<%- reputation_id = 'reputation'+point.id.to_s %>
-	<%- reputation_block_id = 'reputation_block'+point.id.to_s %>
+	<%- reputation_id = 'reputation_'+point.id.to_s %>
+	<%- reputation_block_id = 'reputation_block_'+point.id.to_s %>
 	<%- reputation_block_style = '' %>
 	<%- if reputation == 0 %>
 		<%- reputation_block_style = 'display:none' %>
@@ -37,48 +37,14 @@
 
 		<% if user_signed_in? && current_user.id != point.user.id %>
 		<span class="liking">
-			<%- like_id = 'like'+point.id.to_s %>
-			<%- unlike_id = 'unlike'+point.id.to_s %>
-			<%- unlike_style = '' %>
-			<%- like_style = '' %>
-			<%- if current_user.liked? point %>
-				<%- like_style = 'display: none;' %>
-			<%- else %>
-				<%- unlike_style = 'display: none;' %>
-			<%- end %>
 
-			<%= link_to like_point_path(:id => point.id, :format => :json), method: :get, style: like_style, class: 'like', id: like_id, :remote => true do %>Like<% end %>
-			<%= link_to unlike_point_path(:id => point.id, :format => :json), method: :get, style: unlike_style, class: 'like', id: unlike_id, :remote => true do %>Unlike<% end %>
+			<%- like_id = 'like_'+point.id.to_s %>
+			<%- liked = current_user.liked? point %>
+			<input type="hidden" id="liked_<%= point.id.to_s %>" value="<%= liked ? 'true' : 'false' %>"  />
 
-			<script type="text/javascript">
-				$('#<%= like_id %>').bind('ajax:complete', function() {
-					$('#<%= like_id %>').hide();
-					$('#<%= unlike_id %>').show();
-				    var reputation = document.getElementById('<%= reputation_id %>');
-				    var score = reputation.innerHTML;
-				    score++;
-				    reputation.innerHTML = score;
-				    if(score==0){
-				    	$('#<%= reputation_block_id %>').hide();
-				    }else{
-				    	$('#<%= reputation_block_id %>').show();
-				    }
-				});
+			<%- ajax_params = {:id => point.id, :format => :json} %>
+			<%= link_to (liked ? unlike_point_path(ajax_params) : like_point_path(ajax_params)), method: :get, class: 'btn_like', id: like_id, :remote => true do %><%= liked ? 'Unlike' : 'Like'%><% end %>
 
-				$('#<%= unlike_id %>').bind('ajax:complete', function() {
-					$('#<%= like_id %>').show();
-					$('#<%= unlike_id %>').hide();
-				    var reputation = document.getElementById('<%= reputation_id %>');
-				    var score = reputation.innerHTML;
-				    score--;
-				    reputation.innerHTML = score;
-				    if(score==0){
-				    	$('#<%= reputation_block_id %>').hide();
-				    }else{
-				    	$('#<%= reputation_block_id %>').show();
-				    }
-				});
-			</script>
 		</span>
 		<% end %>
 
