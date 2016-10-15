@@ -1,5 +1,7 @@
 class PointsController < ApplicationController
 
+  layout "infinite_scroll", only: [:index]
+
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy, :like, :unlike]
   before_filter :require_user_is_owner, only: [:edit, :update, :destroy]
   before_filter :require_user_is_not_owner, only: [:like, :unlike]

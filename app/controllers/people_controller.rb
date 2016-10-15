@@ -1,5 +1,7 @@
 class PeopleController < ApplicationController
 
+  layout "infinite_scroll", only: [:show]
+
   before_filter :require_user_signed_in, only: [:edit, :update, :blocked]
   before_action :set_self, only: [:edit, :update, :blocked]
 

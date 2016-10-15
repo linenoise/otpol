@@ -1,0 +1,24 @@
+<div id="footer">
+	<p><img src="<%=image_path('otpol.png')%>" alt="Otpol" /></p>
+
+	<p>
+		Copyright &copy; 2016<br />
+		One Thousand Points of Light 
+	</p>
+
+	<p>
+		<%= link_to 'About', about_guide_path() %>
+
+		<%= link_to 'API', api_guide_path() %>
+
+		<%= link_to 'RSS', feed_path(:rss) %>
+
+		<%= link_to 'Source', 'https://github.com/linenoise/otpol' %>
+	</p>
+
+	<%= link_to 'Contact', contact_guide_path() %>
+
+	<%= link_to 'Privacy', legal_privacy_path() %>
+
+	<%= link_to 'Terms', legal_terms_path() %>
+</div>

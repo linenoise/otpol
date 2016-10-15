@@ -14,7 +14,7 @@
 
 				<% if user_signed_in? %>
 					<% if current_user.id == @person.id %>
-						<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary btn-edit' %>
+						<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary' %>
 					<% else %>
 					    <% if current_user.is_following(@person) %>
 						    <%= link_to 'Unfollow', unfollow_user_path(@person.username), class: "btn btn-default btn-edit" %>
@@ -80,8 +80,9 @@
 			</div>
 			<% end %>
 
-			<%= render partial: 'landings/footer' %>
-
+			<div class="footer content-box profile">
+				<%= render partial: 'elements/footer' %>
+			</div>
 		</div>
 
 		<div class="col-md-9" id="points">

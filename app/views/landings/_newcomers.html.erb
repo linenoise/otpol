@@ -9,4 +9,26 @@
 		</li>
 		<% end %>
 	</ul>
+
+	<% if @newcomers.include?(current_user) %>
+	<div class="welcome">
+
+		<h4>Welcome!</h4>
+
+		<p>
+			It looks like you've joined us in the past few days. We're glad you're here!
+		</p>
+
+		<p>
+			Please take a moment to flip through our 
+			<%= link_to 'welcome guide', welcome_guide_path() %>
+			if you haven't already.
+		</p>
+		<p>
+			If you have any questions, please feel free to reach out in chat or to 
+			<%= link_to 'contact support', contact_guide_path() %>.
+		</p>
+
+	</div>
+	<% end %>
 </div>

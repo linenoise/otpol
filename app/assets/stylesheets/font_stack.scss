@@ -1,0 +1,16 @@
+/* Font stacks */
+
+$body-font:       helvetica, arial, sans-serif;
+$heading-font:    'avenir';
+
+/* Typeface declarations */
+
+@font-face {
+	font-family: 'avenir';
+	font-style: normal;
+	font-weight: normal;
+	src: url('AvenirNextLTPro-Medium.eot?#iefix') format('embedded-opentype'), 
+	     url('AvenirNextLTPro-Medium.woff')       format('woff'), 
+	     url('AvenirNextLTPro-Medium.ttf')        format('truetype'), 
+	     url('AvenirNextLTPro-Medium.svg')        format('svg');
+}

@@ -4,7 +4,7 @@
 		<% @activity.each do |point| %>
 		<li class="point activity">
 			<%= link_to point.title, point_path(point) %>
-			by <%= link_to point.user.display_name, person_path(point.user) %>
+			by <%= link_to point.user.display_name, person_path(point.user.username) %>
 		</li>
 		<% end %>
 	</ul>

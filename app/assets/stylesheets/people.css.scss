@@ -1,3 +1,87 @@
 // Place all the styles related to the people controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "color_palette";
+@import "font_stack";
+
+.profile h2, .landing h2 {
+	font-size: 24px;
+	margin-top: 0em;
+	margin-bottom: 0.5em;
+}
+
+.profile h3, .landing h3 {
+	font-size: 18px;
+	margin-top: 0em;
+	margin-bottom: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid #DDD;
+}
+
+h3.username {
+	border-bottom: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.profile .header img {
+	margin-bottom: 1em;
+	height: 182px;
+	width: 182px;
+	border-radius: 5px;
+	border: 1px solid #DDD;
+	border-top-color: #E6E6E6;
+	border-bottom-color: #C7C7C7;
+}
+
+.profile .btn, form .btn {
+	width: 182px;
+}
+
+.profile .header .btn {
+	margin-top: 1em;
+}
+
+.profile ul, .landing ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.profile ul li, .landing ul li {
+    display: block;
+    padding: 0px;
+}
+
+.profile ul li, .landing ul li {
+    padding-bottom: 0.5em;
+}
+
+.profile ul li:last-child  {
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	border-bottom: 0px;
+}
+
+.profile p:last-child {
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	border-bottom: 0px;
+}
+
+.active.person {
+    white-space: nowrap;
+    overflow: hidden;
+   	height: 45px;
+   	margin-bottom: 10px;
+}
+
+.active.person .thumbnail {
+	float: left;
+}
+
+.active.person .name {
+	font-weight: bold;
+}
+
