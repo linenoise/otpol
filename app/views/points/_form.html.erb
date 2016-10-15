@@ -1,6 +1,6 @@
 <%= form_for @point, :html => { :class => 'form-horizontal form-model new-point' } do |f| %>
 
-    <%= f.text_area :description, :class => 'text-field form-control new-point', :placeholder => 'Share your story' %>
+    <%= f.text_area :description, :class => 'text-field form-control new-point' %>
 
     <div id="point_metadata" style="display:none">
 	    <%= f.text_field :moment, :class => 'text-field form-control', :placeholder => 'When was this?' %>
@@ -10,7 +10,7 @@
 	    <%= f.text_field :accomplices, :class => 'text-field form-control', :placeholder => 'Who was with you? (optional)' %>
 	</div>
 
-	<%= f.submit 'Share your light', :class => 'btn btn-primary', style: "width:100%" %>
+	<%= f.submit 'Share your story', :class => 'btn btn-primary', style: "width:100%" %>
 
 	<script type="text/javascript">
 		$("#point_description").focus(function() {
