@@ -17,7 +17,7 @@
 			$("#point_metadata").slideDown();
 		});
 		$("#point_description").blur(function() {
-			if(typeof $('textarea#mytextarea').val() == 'undefined'){
+			if($('#point_description').val().length == 0){
 				$("#point_metadata").slideUp();
 			}
 		});
