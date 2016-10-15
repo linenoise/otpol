@@ -10,7 +10,7 @@ class PointsController < ApplicationController
   # GET /points
   # GET /points.json
   def index
-    @points = Point.all
+    @points = Point.order(:created_at => :desc).page(params[:page]).per(10)
   end
 
   # GET /feed.rss

@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     where("created_at" => 3.days.ago..0.days.ago).order("created_at DESC")
   }
 
+  scope :here_today, -> { 
+    where("last_seen_at" => 1.days.ago..0.days.ago).order("created_at DESC")
+  }
+
   ### Attributes
 
   has_attached_file :avatar, styles: {
@@ -67,6 +71,18 @@ class User < ActiveRecord::Base
       timeline_points.push(followed_user.points.all)
     end
     timeline_points.flatten.sort {|x,y| y.created_at <=> x.created_at}
+  end
+
+  def point_count
+    self.points.length
+  end
+
+  def point_percentage
+    percentage = 100 * point_count / 1000
+    if percentage > 100
+      percentage = 100
+    end
+    percentage
   end
 
   def self.active_recently

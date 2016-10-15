@@ -1,14 +1,16 @@
 <div class="hero content-box">
 	<img class="logo" src="<%=image_path('otpol.png')%>" alt="Otpol" /><br />
-    <div class="brand">We share ephemeral stories</div>
+    <div class="brand">We share ephemeral beauty</div>
     <hr />
     <p>
     	One thousand points of light is<br />
     	an experiment in textured, familiar,<br />
-    	impermanent prose of the senses.<br />
+    	impermanent stories of the senses.<br />
 	</p>
 	<%= link_to 'Join in and make light!', new_user_registration_path, class: "btn btn-primary btn-join" %>
 </div>
+
+<style type="text/css"> #profile_link { display: none; } </style>
 
 <div class="guest landing container">
 	<div class="row">
@@ -17,8 +19,14 @@
 			<%= render partial: 'active_recently' %>
 			<%= render partial: 'footer' %>
 		</div>
-		<div class="col-md-9">
-			<%= render partial: 'points' %>
+		<div class="col-md-9" id="points">
+			<%= render partial: 'points/point', collection: @points %>
+		</div>
+		<div class="col-md-9 col-md-offset-3 paginator">
+			<div class="content-box">
+				<%= paginate @points %>
+			</div>
 		</div>
 	</div>
 </div>
+

@@ -27,6 +27,11 @@
 
 			<div class="content-box">
 
+				<div class="progress-container">
+					<div style="width: <%= @person.point_percentage %>%"></div>
+				</div>
+				<p>Shares <%= number_with_delimiter @person.point_count %> points of light</p>
+
 				<% [:bio, :mission, :motto, :affiliations, :place].each do |blurb| %>
 					<% unless @person.send(blurb).to_s.empty? %>
 					<strong><%= blurb.capitalize %></strong><br />
@@ -48,7 +53,7 @@
 				<p><%= @person.created_at.strftime("%B %d, %Y") %></p>
 
 				<strong>Last seen</strong><br />
-				<p><%= @person.last_sign_in_at.strftime("%B %d, %Y") %></p>
+				<p><%= @person.last_seen_at.strftime("%B %d, %Y") %></p>
 
 			</div>
 
@@ -79,7 +84,7 @@
 
 		</div>
 
-		<div class="col-md-9">
+		<div class="col-md-9" id="points">
 
 			<% if user_signed_in? && current_user.id == @person.id %>
 			<div class="content-box">
@@ -87,10 +92,13 @@
 			</div>
 			<% end %>
 
-			<% @person.points.each do |point| %>
-			<%= render partial: 'points/point', locals: {point: point} %>
-			<% end %>
+			<%= render partial: 'points/point', collection: @points %>
 
+		</div>
+		<div class="col-md-9 col-md-offset-3 paginator">
+			<div class="content-box">
+				<%= paginate @points %>
+			</div>
 		</div>
 	</div>
 </div>

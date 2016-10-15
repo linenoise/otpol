@@ -6,9 +6,9 @@
 
 <%= f.password_field :password, class: "text-field form-control", autocomplete: "off", placeholder: "Password" %>
 
-<%= f.check_box :remember_me %>
+<div class='devise remember_me'><%= f.check_box :remember_me %>
 <%= label_tag(:remember_me, "Remember Me") %>
-                                                                                                                                      
+</div>                                                                                                                                    
 <%= f.submit "Login", class: "form-control btn btn-primary" %>
 
 <% end %>

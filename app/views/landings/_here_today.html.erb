@@ -1,17 +1,15 @@
 <div class="content-box landing">
-	<h3>Activity</h3>
+	<h3>Here today</h3>
 	<ul>
-		<% @active_recently.each do |user, count_all| %>
+		<% @here_today.each do |user| %>
 		<li class="active person">
 			<a href="<%= person_path(:id => user.username) %>">
 			    <%= image_tag(user.avatar.url(:thumb), class: 'thumbnail') %>
-				<span class="name"><%= user.display_name %></span><br />
-				(<%= count_all %> new)
-			</a>
+				<span class="name"><%= user.display_name %></span>
+			</a><Br />
+			<em><%= user.place %></em>
 		</li>
 		<% end %>
 	</ul>
-	<hr />
-	<%= link_to 'All entries', points_path() %>
 </div>
 

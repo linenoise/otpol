@@ -12,6 +12,8 @@ class PeopleController < ApplicationController
   # Shows a particular profile page
   def show
     @person = User.find_by_username(params[:id])
+    @points = @person.points.order(:created_at => :desc).page(params[:page]).per(10)
+
     unless @person
       raise ActiveRecord::RecordNotFound
     end

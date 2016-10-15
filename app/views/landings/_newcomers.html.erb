@@ -1,6 +1,12 @@
 <div class="content-box landing">
 	<h3>New people</h3>
 	<ul>
-		<%= render partial: "people/list_item", collection: @newcomers %>
+		<% @newcomers.each do |user| %>
+		<li>
+			<a href="<%= person_path(:id => user.username) %>">
+				<span class="name"><%= user.display_name %></span>
+			</a>
+		</li>
+		<% end %>
 	</ul>
 </div>

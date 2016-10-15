@@ -21,7 +21,6 @@
 }
 
 
-  
 
 
 h1, h2, h3, h4, h5, .btn-join {
@@ -34,30 +33,20 @@ body {
 }
 
 
-
-.navbar {
-	background-color: #14162d;
-	border: 0px solid #000;
-	border-bottom: 2px solid #BBB;
-	border-radius: 0px;
-	margin-bottom: 0px;
-}
-
-.navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
-	margin: 2px 0.5em 0px 0.5em;
+.header .content-box {
+	margin-top: 1em;
 	font-family: 'avenir';
 	font-size: 14pt;
-	color: #E6E6E6;
 }
 
-.navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li > a:hover {
-	color: #fffcf3;
+.header .content-box > a, 
+.header .content-box > a:hover, 
+.header .content-box > a:active,
+.header .content-box > a:link {
+	color: #333;
+	text-decoration: none;
+	font-weight: bold;
 }
-
-.navbar-right {
-	margin-right: 0.5em;
-}
-
 
 
 .container {
@@ -73,6 +62,35 @@ body {
 }
 
 
+div.progress-container { 
+	border: 1px solid #CCC;
+	border-radius: 5px;
+	width: 100%;
+	margin: 2px 5px 10px 0px;
+	padding: 1px;
+	float: left;
+	background: white;
+}
+div.progress-container > div { 
+	background-color: #555;
+	border-radius: 5px;
+	height: 12px
+}
+
+
+
+.container .paginator {
+	text-align: center;
+}
+
+nav.pagination {
+	margin: 0px;
+}
+
+nav.pagination > span {
+	font-size: 12pt;
+	padding: 0em 0.5em;
+}
 
 .content-box {
 	background-color: #FFF;
@@ -98,22 +116,21 @@ body {
 }
 
 .hero.content-box {
-	text-align: center
+	text-align: center;
+	margin-bottom: 2em;
+	margin-top: 0.25em;
 }
 
 .hero .brand {
 	font-family: 'avenir';
 	font-weight: bold;
 	font-size: 22pt;
-	// width: 400px;
-	// height: 96px;
-	// margin: 0.5em 0em;
 }
 
 .hero img.logo {
 	width: 100px;
 	height: 100px;
-	margin: 0.5em 0.5em 0em 0,5em;
+	margin: 1em 0.5em 0em 0,5em;
 }
 
 .hero hr {
@@ -131,6 +148,7 @@ body {
 
 .hero .btn-join {
 	margin-top: 0.75em;
+	margin-bottom: 1em;
 }
 
 
@@ -157,6 +175,10 @@ a.like {
 .devise .btn-primary {
 	width: 100%;
 	text-align: left;
+}
+
+.devise.remember_me {
+	margin: 10px 0px 5px 0px;
 }
 
 .form-group > label {
@@ -221,7 +243,7 @@ h3.username {
     padding: 0px;
 }
 
-.profile ul a, .profile ul li, .landing ul a, .landing ul li {
+.profile ul li, .landing ul li {
     display: block;
     padding: 0px;
 }
@@ -230,8 +252,24 @@ h3.username {
     padding-bottom: 0.5em;
 }
 
-.profile ul li:last-child, .landing ul li:last-child {
+li.point.activity {
+	border-bottom: 1px solid #E6E6E6;
+	margin: 0.5em 0em;
+}
+
+div.activity.link {
+	border-top: 1px solid #E6E6E6;
+	margin-top: 0.5em;
+	padding-top: 0.5em;
+	font-weight: bold;
+}
+
+.profile ul li:last-child, 
+.landing ul li:last-child,
+.profile p:last-child {
 	padding-bottom: 0px;
+	margin-bottom: 0px;
+	border-bottom: 0px;
 }
 
 img.thumbnail {
@@ -245,7 +283,8 @@ img.thumbnail {
 .active.person {
     white-space: nowrap;
     overflow: hidden;
-   	height: 60px;
+   	height: 45px;
+   	margin-bottom: 10px;
 }
 
 .active.person .thumbnail {
@@ -326,8 +365,12 @@ textarea.new-point {
 	text-align: left;
 }
 
+.footer a {
+	margin: 0px 0.25em;
+}
 
 
+#infscr-loading { display:none; }
 
 
 
