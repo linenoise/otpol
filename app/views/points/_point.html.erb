@@ -28,7 +28,8 @@
 		<%- reputation_block_style = 'display:none' %>
 	<%- end %>
 
-	<% unless reputation == 0 && user_signed_in? && current_user.id == point.user.id %>
+	<% if user_signed_in? %>
+	<% unless reputation == 0 && (current_user.id == point.user.id) %>
 
 	<hr />
 
@@ -86,6 +87,7 @@
 		</span>
 
 	</div>
+	<% end %>
 	<% end %>
 
 </div>
