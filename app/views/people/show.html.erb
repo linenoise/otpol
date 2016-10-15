@@ -52,9 +52,10 @@
 				<strong>Joined</strong><br />
 				<p><%= @person.created_at.strftime("%B %d, %Y") %></p>
 
+				<% if @person.last_seen_at %>
 				<strong>Last seen</strong><br />
 				<p><%= @person.last_seen_at.strftime("%B %d, %Y") %></p>
-
+				<% end %>
 			</div>
 
 
