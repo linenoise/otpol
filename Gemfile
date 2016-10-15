@@ -6,6 +6,7 @@ gem 'rails', '~> 4.2.0'
 gem 'rails_config'
 gem 'bundler'
 gem 'nokogiri', '1.6.1'
+gem 'dotenv-rails'
 
 ### API
 
@@ -70,7 +71,6 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'dotenv-rails'
   # gem 'debugger'
   # gem 'unicorn'
 end

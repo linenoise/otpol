@@ -1,6 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
 
+require 'dotenv/capistrano'
+
 set :application, 'otpol'
 set :repo_url, 'git@github.com:linenoise/otpol.git'
 
