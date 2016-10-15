@@ -2,6 +2,7 @@
 
 $body-font:       helvetica, arial, sans-serif;
 $heading-font:    'avenir';
+$title-font:      'avenir-bold';
 
 /* Typeface declarations */
 
@@ -14,3 +15,14 @@ $heading-font:    'avenir';
 	     url('AvenirNextLTPro-Medium.ttf')        format('truetype'), 
 	     url('AvenirNextLTPro-Medium.svg')        format('svg');
 }
+
+@font-face {
+	font-family: 'avenir-bold';
+	font-style: normal;
+	font-weight: normal;
+	src: url('AvenirNextLTPro-Bold.eot?#iefix')   format('embedded-opentype'), 
+	     url('AvenirNextLTPro-Bold.woff')         format('woff'), 
+	     url('AvenirNextLTPro-Bold.ttf')          format('truetype'), 
+	     url('AvenirNextLTPro-Bold.svg')          format('svg');
+}
+

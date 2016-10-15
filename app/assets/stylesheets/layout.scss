@@ -169,9 +169,13 @@ hr.footer {
 .header .content-box > a:hover, 
 .header .content-box > a:active,
 .header .content-box > a:link {
-	// color: #333;
+	color: #333;
 	text-decoration: none;
 	font-weight: bold;
+}
+
+.header .content-box.site-title {
+	font-family: $title-font;
 }
 
 /* Headings
