@@ -13,11 +13,9 @@ class User < ActiveRecord::Base
   attr_accessor :login
   devise authentication_keys: [:login]
 
-
   ### Relation
 
   has_many :points
-
 
   ### Scopes
 
@@ -44,7 +42,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
   ### Validation
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
@@ -60,18 +57,9 @@ class User < ActiveRecord::Base
     end
   end
 
-
   ### Points
 
   acts_as_voter
-
-  def timeline
-    timeline_points = self.points.all
-    self.following.each do |followed_user|
-      timeline_points.push(followed_user.points.all)
-    end
-    timeline_points.flatten.sort {|x,y| y.created_at <=> x.created_at}
-  end
 
   def point_count
     self.points.length
@@ -83,6 +71,10 @@ class User < ActiveRecord::Base
       percentage = 100
     end
     percentage
+  end
+
+  def timeline
+    Point.for(self.id)
   end
 
   def self.active_recently
