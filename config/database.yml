@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: otpol_production
-  username: otpol
+  database: <%= ENV['OTPOL_DATABASE_DATABASE'] %>
+  username: <%= ENV['OTPOL_DATABASE_USERNAME'] %>
   password: <%= ENV['OTPOL_DATABASE_PASSWORD'] %>
