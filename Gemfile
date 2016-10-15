@@ -28,6 +28,9 @@ gem 'validates_formatting_of'
 gem 'tzinfo-data'
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+### Web server
+gem 'puma'
+
 ### Frontend
 
 gem 'bootstrap-sass', '3.3.5'
@@ -57,7 +60,11 @@ group :development do
   gem 'spring'
   gem 'pry-rails'
   gem 'better_errors'
-  # gem 'capistrano-rails'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
 end
 
 group :development, :test do
