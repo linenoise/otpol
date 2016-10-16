@@ -1,7 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8 col-md-offset-2">
       <%= render partial: 'point', locals: {point: @point} %>
     </div>
+    <%- if user_signed_in? %>
+      <div class="col-md-8 col-md-offset-2">
+		<div class="content-box" style="margin-top: 20px;">
+          <%= render partial: 'points/new' %>
+	    </div>
+	  </div>
+    <%- end %>
   </div>
 </div>

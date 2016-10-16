@@ -1,6 +1,6 @@
 <%= form_for @point, :html => { :class => 'form-horizontal form-model new-point' } do |f| %>
 
-    <%= f.text_area :description, :class => 'text-field form-control new-point' %>
+    <%= f.text_area :description, :class => 'text-field form-control new-point', :placeholder => 'Start with the words a, an, the, this, that, these, or those. Stay between 64 and 512 characters. End with anything but a punctuation mark.' %>
 
     <div id="point_metadata" style="display:none">
 	    <%= f.text_field :moment, :class => 'text-field form-control', :placeholder => 'When was this?' %>
