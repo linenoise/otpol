@@ -8,7 +8,7 @@
     <div class="col-md-3" id="profile_link">
       <div class="content-box">
         <% if defined?(Devise) && user_signed_in? %>
-          <%= link_to '@' + current_user.username, person_path(:id => current_user.username ) %>
+          <%= link_to current_user.display_name, person_path(:id => current_user.username ) %>
         <% else %>
           <%= link_to 'Join in', new_user_registration_path %>
         <% end %>
