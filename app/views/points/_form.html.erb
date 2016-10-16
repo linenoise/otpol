@@ -1,12 +1,17 @@
 <%= form_for @point, :html => { :class => 'form-horizontal form-model new-point' } do |f| %>
 
-    <%= f.text_area :description, :class => 'text-field form-control new-point', :placeholder => 'Start with the words a, an, the, this, that, these, or those. Stay between 64 and 512 characters. End with anything but a punctuation mark.' %>
+    <%= f.text_area :description, :class => 'text-field form-control new-point', :placeholder => 
+'Start with a, an, the, this, that, these, or those. 
+Stay between 64 and 512 characters. 
+End with anything but a punctuation mark.' %>
 
     <div id="point_metadata" style="display:none">
+		<div class="progress-container">
+			<div id="progess_bar" style="width: 0%"></div>
+		</div>
 	    <%= f.text_field :moment, :class => 'text-field form-control', :placeholder => 'When was this?' %>
 
 	    <%= f.text_field :location, :class => 'text-field form-control', :placeholder => 'Where were you?' %>
-
 	</div>
 
 	<%= f.submit 'Share your story', :class => 'btn btn-primary', style: "width:100%" %>
@@ -19,9 +24,30 @@
 				$("#point_metadata").slideUp();
 			}
 		}
-		$("#point_description").change(function() { slideAppropriately() });
-		$("#point_description").keyup(function() { slideAppropriately() });
-		$("#point_description").focus(function() { slideAppropriately() });
-		$("#point_description").blur(function() { slideAppropriately() });
+
+		function updateProgressContainer(){
+			length = $('#point_description').val().length;
+			width = (length * 100) / 512;
+			if (width > 100){
+				width = 100; 
+			}
+
+			$("#progess_bar").css('width', width + '%');
+
+			if (length < 64) { 
+				$("#progess_bar").css('background-color', '#bce8f1'); 
+			}
+			if (length >= 64 && length <= 512) { 
+				$("#progess_bar").css('background-color', '#d6e9c6'); 
+			}
+			if (length > 512) { 
+				$("#progess_bar").css('background-color', '#ebccd1'); 
+			}
+		}
+
+		$("#point_description").change(function() { slideAppropriately(); updateProgressContainer() });
+		$("#point_description").keyup(function()  { slideAppropriately(); updateProgressContainer() });
+		$("#point_description").focus(function()  { slideAppropriately(); updateProgressContainer() });
+		$("#point_description").blur(function()   { slideAppropriately(); updateProgressContainer() });
 	</script>
 <% end %>
