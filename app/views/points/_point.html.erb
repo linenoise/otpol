@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="author">
-		<%= link_to point.user.display_name, person_path(:id => point.user.username ) %><% unless point.accomplices.to_s.empty? %>, <%= h point.accomplices %><% end %>
+		<%= link_to point.user.display_name, person_path(:id => point.user.username ) %>
 		<br />
 		<%= h point.moment %>; 
 		<strong><%= h point.location %></strong>
