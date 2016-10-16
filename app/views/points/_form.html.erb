@@ -13,13 +13,16 @@
 	<%= f.submit 'Share your story', :class => 'btn btn-primary', style: "width:100%" %>
 
 	<script type="text/javascript">
-		$("#point_description").focus(function() {
-			$("#point_metadata").slideDown();
-		});
-		$("#point_description").blur(function() {
-			if($('#point_description').val().length == 0){
+		function slideAppropriately() {
+			if( $('#point_description').val().length > 0 ){
+				$("#point_metadata").slideDown();
+			} else {
 				$("#point_metadata").slideUp();
 			}
-		});
+		}
+		$("#point_description").change(function() { slideAppropriately() });
+		$("#point_description").keyup(function() { slideAppropriately() });
+		$("#point_description").focus(function() { slideAppropriately() });
+		$("#point_description").blur(function() { slideAppropriately() });
 	</script>
 <% end %>
