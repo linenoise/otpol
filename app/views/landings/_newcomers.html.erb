@@ -1,4 +1,6 @@
+<% if @newcomers.length > 0 %>
 <div class="content-box landing">
+
 	<h3>New people</h3>
 	<ul>
 		<% @newcomers.each do |user| %>
@@ -9,4 +11,6 @@
 		</li>
 		<% end %>
 	</ul>
+
 </div>
+<% end %>

@@ -1,15 +1,15 @@
 <div class="content-box landing">
-	<h3>Activity</h3>
+	<h3>All new stories</h3>
 	<ul>
 		<% @activity.each do |point| %>
-		<li class="point activity">
+		<li class="point activity" style="padding-left: 14px;">
 			<%= link_to point.title, point_path(point) %>
 			by <%= link_to point.user.display_name, person_path(point.user.username) %>
 		</li>
 		<% end %>
 	</ul>
 	<div class="activity link">
-		<%= link_to 'All activity', points_path() %>
+		<%= link_to 'More new stories', points_path() %>
 	</div>
 </div>
 

@@ -77,16 +77,15 @@ class User < ActiveRecord::Base
     Point.for(self.id)
   end
 
-  def self.active_recently
+  def self.people_to_follow
     Point.joins(:user)
       .where("points.created_at" => 7.days.ago..0.days.ago)
       .group("users.username")
       .order("count_all DESC")
       .count()
-      .map{|row| [
-        self.find_by_username(row[0]),
-        row[1]
-      ]}
+      .map{|row|
+        self.find_by_username(row[0])
+      }
   end
 
   ### Blocking

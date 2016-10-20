@@ -1,15 +1,15 @@
-<% if @here_today.length > 0 %>
+<% if @people_to_follow.length > 0 %>
 <div class="content-box landing">
 
-	<h3>Here today</h3>
+	<h3>People to follow</h3>
 	<ul>
-		<% @here_today.each do |user| %>
-		<li class="active person">
+		<% @people_to_follow.each do |user| %>
+		<li class="active person to_follow">
 			<a href="<%= person_path(:id => user.username) %>">
 			    <%= image_tag(user.avatar.url(:thumb), class: 'thumbnail') %>
 				<span class="name"><%= user.display_name %></span>
-			</a><Br />
-			<em><%= user.place %></em>
+			</a><br />
+			<%= link_to 'Follow', follow_user_path(user.username), class: "btn btn-primary" %>
 		</li>
 		<% end %>
 	</ul>

@@ -76,3 +76,24 @@ div.activity.link {
 	margin-bottom: 0px;
 	padding-bottom: 0px;
 }
+
+.active.person {
+    white-space: nowrap;
+    overflow: hidden;
+   	height: 50px;
+   	margin-bottom: 10px;
+}
+
+.active.person .thumbnail {
+	float: left;
+}
+
+.active.person .name {
+	font-weight: bold;
+}
+
+.person.to_follow .btn {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
