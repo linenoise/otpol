@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  around_filter :set_time_zone
+
   protected
 
   def configure_permitted_parameters
@@ -15,6 +17,14 @@ class ApplicationController < ActionController::Base
 
   private
   
+  def set_time_zone
+    old_time_zone = Time.zone
+    Time.zone = current_user.time_zone if user_signed_in?
+    yield
+  ensure
+    Time.zone = old_time_zone
+  end
+
   def require_user_signed_in
     unless user_signed_in?
 
