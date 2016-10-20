@@ -42,6 +42,22 @@ class User < ActiveRecord::Base
     end
   end
 
+  def profile_completeness
+    [ self.avatar.present?,
+      ! self.name.nil?,
+      ! self.bio.nil?,
+      ! self.mission.nil?,
+      ! self.motto.nil?,
+      ! self.website.nil?,
+      ! self.place.nil?,
+      ! self.affiliations.nil?
+    ].map{|complete|
+      complete == true ? 12.5 : 0
+    }.inject(0, 
+      :+ 
+    ).to_i
+  end
+
   ### Validation
 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/

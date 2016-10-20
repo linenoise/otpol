@@ -14,7 +14,13 @@
 
 				<% if user_signed_in? %>
 					<% if current_user.id == @person.id %>
-						<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary' %>
+
+						<% if current_user.profile_completeness > 75 %>
+							<%= link_to 'Edit your profile', edit_person_url(), class: 'btn btn-primary' %>
+						<% else %>
+							<%= link_to 'Complete your profile', edit_person_url(), class: 'btn btn-primary' %>
+						<% end %>
+
 					<% else %>
 					    <% if current_user.is_following(@person) %>
 						    <%= link_to 'Unfollow', unfollow_user_path(@person.username), class: "btn btn-default btn-edit" %>

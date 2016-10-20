@@ -90,7 +90,7 @@
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
 
-      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= f.submit nil, :value => 'Update profile', :class => 'btn btn-primary' %>
 
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   person_path(:id => current_user.username ), :class => 'btn btn-default' %>
