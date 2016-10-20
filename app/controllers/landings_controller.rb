@@ -5,14 +5,33 @@ class LandingsController < ApplicationController
   def index
     @activity = Point.recent
     @here_today = User.here_today
+
   	if user_signed_in?
-      @newcomers = User.newcomers
-      # @points = current_user.timeline.page(params[:page]).per(10)
-      @points = Point.timeline.page(params[:page]).per(10)
-  		render :home
+      home
   	else
-      @points = Point.timeline.page(params[:page]).per(10)
-  		render :guest
+  		guest
   	end
   end
+
+  def home
+    @newcomers = User.newcomers
+
+    @points = current_user.timeline.page(params[:page]).per(10)
+    if @points.length == 0
+      @points = Point.timeline.page(params[:page]).per(10)
+
+      if current_user.following.length == 0
+        flash[:notice] = 'It looks like you have\'nt followed anyone or written anything yet, so here are a selection of new stories from people. Why not follow a few of them?' 
+      else
+        flash[:notice] = 'It looks like the people you follow haven\'t written anything yet, so here are a selection of new stories from people.' 
+      end        
+    end
+    render :action => :home
+  end
+
+  def guest
+    @points = Point.timeline.page(params[:page]).per(10)
+    render :action => :guest
+  end
+
 end
