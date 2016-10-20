@@ -113,7 +113,7 @@ class PointsController < ApplicationController
   end
 
   def point_params
-    params.require(:point).permit(:description, :location, :moment, :accomplices)
+    params.require(:point).permit(:description, :location, :moment)
   end
 
   def fallback_redirect
