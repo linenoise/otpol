@@ -1,0 +1,5 @@
+<% if Rails.env.development? %>
+  <div class="runtime-environment development">development</div>
+<% elsif Rails.env.staging? %>
+  <div class="runtime-environment staging">staging</div>
+<% end %>

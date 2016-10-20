@@ -89,6 +89,24 @@ body {
 	list-style-type: circle;
 }
 
+/* Environments
+================================================== */
+
+.runtime-environment{
+  width: 200px;
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 32px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.runtime-environment.development{background: #999;}
+.runtime-environment.staging{background: #FF9524;}
+
 /* Flash messages
 ================================================== */
 
