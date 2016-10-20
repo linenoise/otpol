@@ -41,7 +41,7 @@ a:hover, a:active, a:link, a:viited {
 body {
 	background-color: $body-color;
 	color: $text-color;
-	font-family: helvetica, arial, sans-serif;
+	font-family: $body-font;
 	padding-bottom: 2em;
 }
 
@@ -177,8 +177,8 @@ hr.footer {
 
 .header .content-box.site-title {
 	font-family: $title-font;
-	font-size: 21pt;
-	padding-top: 14px;
+	font-size: 24pt;
+	padding-top: 9px;
 	padding-bottom: 9px;
 }
 
