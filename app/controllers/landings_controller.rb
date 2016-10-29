@@ -19,9 +19,11 @@ class LandingsController < ApplicationController
     @people_to_follow = User.people_to_follow.keep_if { |this_user|
       current_user.can_follow(this_user) &&
       ! current_user.is_following(this_user)
+    }.uniq { 
+      |u| u.id 
     }
 
-    @points = current_user.timeline.page(params[:page]).per(10)
+    @points = current_user.timeline.uniq {|p| p.id}.page(params[:page]).per(10)
     if @points.length == 0
       @points = Point.timeline.page(params[:page]).per(10)
 
